@@ -43,7 +43,6 @@ function saveCoins() {
     localStorage.setItem('avatar_coins', coins);
     localStorage.setItem('avatar_energy', energy);
     localStorage.setItem('avatar_lastupdate', Date.now());
-    console.log('Saved to Local Storage.')
 }
 function saveEnergy() {
     localStorage.setItem('avatar_energy', energy);
@@ -95,11 +94,6 @@ function rechargeEnergy() {
     }
 }
 
-function saveEnergy() {
-    localStorage.setItem('avatar_energy', energy);
-    localStorage.setItem('avatar_lastupdate', Date.now());
-}
-
 function updateEnergyBar() {
     const energyFill = document.getElementById('energy-fill');
     const energyValue = document.getElementById('energy-count');
@@ -125,7 +119,7 @@ function coinClicked(event) {
     const touchCount = touches.length;
 
     if (energy <= 0) {
-        alert("Not enough energy to click the coin!");
+        showNotification("Not enough energy to click the coin!");
         return;
     }
 
@@ -200,4 +194,13 @@ function createFeedback(x, y, amount) {
 
 
 //#region Popups
+function showNotification(message) {
+    const notification = document.getElementById('notification');
+    notification.innerText = message;
+    notification.classList.add('show');
+    setTimeout(() => {
+        notification.classList.remove('show');
+    }, 5000); // Hide the notification after 5 seconds
+}
+
 //#endregion
