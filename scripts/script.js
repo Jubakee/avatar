@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
 window.addEventListener('load', () => {
 loadCoins();
 loadEnergy();
+loadInventory();
 setInterval(rechargeEnergy, rechargeInterval);
 setupTabEventListeners();
 });
@@ -14,7 +15,6 @@ setupTabEventListeners();
 //#region Load & Save
 function loadCoins() {
     const savedCoins = localStorage.getItem('avatar_coins');
-
     if (savedCoins !== null) {
         coins = parseInt(savedCoins, 10);
         document.getElementById('coins').innerText = coins;
@@ -195,15 +195,17 @@ function createFeedback(x, y, amount) {
 //#endregion
 
 //#region Shop
-document.getElementById("purchase-chest").addEventListener("click", function(event) {
-    event.preventDefault(); // Prevent default touch behavior
-    confirmPurchase(event);
-    console.log('click')
+document.addEventListener('DOMContentLoaded', () => {
+    const purchaseButton = document.getElementById('purchase-chest');
+    
+    if (purchaseButton) {
+        purchaseButton.addEventListener('click', confirmPurchase);
+    }
 });
 
 function confirmPurchase() {
     const cost = 10; // Cost of the item
-    const savedCoins = parseInt(localStorage.getItem('avatar_counter'), 10) || 0;
+    const savedCoins = parseInt(localStorage.getItem('avatar_coins'), 10) || 0;
 
     if (savedCoins >= cost) {
         const confirmMessage = `Are you sure you want to purchase the Chest for ${cost} coins?`;
@@ -212,7 +214,7 @@ function confirmPurchase() {
         if (userConfirm) {
             const coins = savedCoins - cost;
             localStorage.setItem('avatar_coins', coins);
-            let inventory = JSON.parse(localStorage.getItem('inventory')) || [];
+            let inventory = JSON.parse(localStorage.getItem('avatar_inventory')) || [];
             inventory.push({ 
                 name: 'Chest', 
                 image: './assets/chest.png', 
@@ -221,10 +223,10 @@ function confirmPurchase() {
                 borderColor: 'gold',
                 position: inventory.length // Save current position
             });
-            localStorage.setItem('inventory', JSON.stringify(inventory));
+            localStorage.setItem('avatar_inventory', JSON.stringify(inventory));
         
             // Update displayed count
-            document.getElementById('count').innerText = count;
+            document.getElementById('coins').innerText = coins;
 
         }
     } else {
@@ -280,7 +282,7 @@ function displayPagination(totalPages) {
     prevButton.onclick = () => {
         if (currentPage > 1) {
             currentPage--;
-            displayInventory(); // Refresh the inventory display
+            loadInventory(); // Refresh the inventory display
         }
     };
     pagination.appendChild(prevButton);
@@ -297,7 +299,7 @@ function displayPagination(totalPages) {
     nextButton.onclick = () => {
         if (currentPage < totalPages) {
             currentPage++;
-            displayInventory(); // Refresh the inventory display
+            loadInventory(); // Refresh the inventory display
         }
     };
     pagination.appendChild(nextButton);
