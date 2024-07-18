@@ -111,7 +111,7 @@ function updateEnergyBar() {
 //#endregion
 
 //#region Coin
-document.getElementById("clickable-coin").addEventListener("click", function(event) {
+document.getElementById("clickable-coin").addEventListener("touch", function(event) {
     coinClicked(event);
     navigator.vibrate(100); // Vibrate on touch
     console.log('good')
