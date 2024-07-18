@@ -16,7 +16,10 @@ main {
     justify-content: flex-start;
     align-items: center;
     width: 100%; /* Make sure main section takes full width */
+    padding-top: 60px; /* Adjust according to header height */
+    box-sizing: border-box;
 }
+
 
 main.active {
     display: flex; /* Only display the active tab */
@@ -101,13 +104,8 @@ main.active {
 }
 
 #clickable-coin img.clicked {
-    animation: pop-out 0.3s ease; /* Pop out animation */
-}
-
-@keyframes pop-out {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.3); }
-    100% { transform: scale(1); }
+    transform: scale(1.1); /* Scale up effect */
+    transition: transform 0.3s ease; /* Smooth transition */
 }
 
 .feedback {
@@ -133,6 +131,7 @@ footer {
     flex: 1;
     text-align: center;
     padding: 10px;
+    margin: 0px 10px;
     border-radius: 10px;
     transition: background-color 0.3s, color 0.3s;
 }
@@ -143,6 +142,7 @@ footer {
 }
 
 .tab span {
+    font-size: 12px;
     display: block;
 }
 
@@ -152,4 +152,74 @@ footer {
     color: white;
 }
 
+#tab2 {
+    display: none; /* Initially hidden */
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+}
 
+#tab2.active {
+    display: flex; /* Display when active */
+}
+
+#shop-items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.shop-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    width: 150px;
+}
+
+.shop-item:hover {
+    transform: translateY(-5px);
+}
+
+.shop-item img {
+    width: 120px;
+    height: auto;
+    padding: 20px;
+}
+
+.shop-item button {
+    padding: 10px;
+    width: 100%;
+    border: none;
+    background-color: green;
+    color: white;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.shop-item button:hover {
+    background-color: #0056b3;
+}
+
+#item-description{
+    padding: 10px;
+    width: 80%;
+    text-align: center;
+    border: none;
+    background-color: green;
+    color: white;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
