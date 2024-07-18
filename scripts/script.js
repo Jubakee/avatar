@@ -8,7 +8,6 @@ window.addEventListener('load', () => {
 loadCoins();
 loadEnergy();
 setInterval(rechargeEnergy, rechargeInterval);
-startRechargeTimer();
 setupTabEventListeners();
 });
 
