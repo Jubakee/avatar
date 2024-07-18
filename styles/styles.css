@@ -7,6 +7,9 @@ body {
     height: 100vh;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
     touch-action: none; /* Prevent default touch actions */
     overflow: hidden; /* Prevent scrolling */
 }
@@ -17,11 +20,7 @@ main {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    width: 100%; /* Make sure main section takes full width */
-    padding-top: 60px; /* Adjust according to header height */
-    box-sizing: border-box;
 }
-
 
 main.active {
     display: flex; /* Only display the active tab */
