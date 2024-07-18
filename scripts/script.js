@@ -1,6 +1,7 @@
 Telegram.WebApp.ready();
 Telegram.WebApp.expand();
-
+Telegram.WebApp.disableSwipe();
+Telegram.WebApp.disableSwipeBack();
 document.addEventListener('DOMContentLoaded', () => {
 
 })
