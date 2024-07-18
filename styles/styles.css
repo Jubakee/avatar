@@ -1,8 +1,27 @@
 body {
-    font-family: Arial, sans-serif;
+    background-color: white;
+    color: black;
+    font: 12px/18px "Comic Sans MS", "Lucida Grande", "Lucida Sans Unicode", Arial, Helvetica, Verdana, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f0f0f0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    touch-action: none; /* Prevent default touch actions */
+    overflow: hidden; /* Prevent scrolling */
+}
+
+main {
+    flex-grow: 1;
+    display: none;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%; /* Make sure main section takes full width */
+}
+
+main.active {
+    display: flex; /* Only display the active tab */
 }
 
 #header {
@@ -18,15 +37,13 @@ body {
     right: 0;
     z-index: 1000;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    box-sizing: border-box;
 }
 
-.header-item {
+#coins-container, #level-container {
     display: flex;
     align-items: center;
-}
-
-.header-item + .header-item {
-    margin-left: 20px;
 }
 
 #coins-icon, #level-icon {
@@ -40,6 +57,73 @@ body {
 }
 
 #level-value {
-    font-size: 16px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+footer {
+    display: flex;
+    justify-content: space-around;
+    background-color: rgba(0, 0, 0, 0.8);
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.tab {
+    cursor: pointer;
+    flex: 1;
+    text-align: center;
+    padding: 10px;
+    border-radius: 10px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.tab img {
+    width: 32px;
+    border: none;
+}
+
+.tab span {
+    font-size: 12px;
+    display: block;
+}
+
+.active-tab {
+    background-color: black;
+    border-radius: 5px;
+    color: white;
+}
+
+#energy-bar-container {
+    position: absolute;
+    text-align: center;
+    bottom: 70px; /* Adjust to be above the footer */
+    width: 80%;
+    padding: 0 20px; /* Add some padding if needed */
+    box-sizing: border-box;
+}
+
+#energy-bar {
+    width: 100%;
+    background-color: red;
+    height: 24px;
+}
+
+#energy-fill {
+    width: 100%;
+    height: 100%;
+    background-color: green; /* Color for the fill */
+}
+
+#energy-value-container {
+    margin-top: 8px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#energy-emoji{
+    font-size: 24px;
     font-weight: bold;
 }
