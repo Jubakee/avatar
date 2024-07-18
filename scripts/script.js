@@ -7,7 +7,6 @@ document.addEventListener('DOMContentLoaded', () => {
 window.addEventListener('load', () => {
 loadCounter();
 setupTabEventListeners();
-Telegram.WebApp.disableSwipeBack();
 });
 
 //#region Load & Save
