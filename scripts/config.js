@@ -7,6 +7,3 @@ const rechargeInterval = 3000; // Recharge every 3 seconds
 let lastUpdateTime = Date.now(); // Track last update time
 
 const feedbackQueue = [];
-let inventory = [];
-let currentPage = 1; // Keep track of the current page
-const itemsPerPage = 9; // Set the number of items per page

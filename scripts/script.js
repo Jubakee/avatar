@@ -7,7 +7,6 @@ document.addEventListener('DOMContentLoaded', () => {
 window.addEventListener('load', () => {
 loadCoins();
 loadEnergy();
-loadInventory();
 setInterval(rechargeEnergy, rechargeInterval);
 setupTabEventListeners();
 });
@@ -116,11 +115,10 @@ document.getElementById("clickable-coin").addEventListener("touchstart", functio
     navigator.vibrate(100); // Vibrate on touch
 });
 
-// document.getElementById("clickable-coin").addEventListener("click", function(event) {
-//     event.preventDefault(); // Prevent default touch behavior
-//     coinClicked(event);
-//     navigator.vibrate(100); // Vibrate on touch
-// });
+document.getElementById("clickable-coin").addEventListener("click", function(event) {
+    coinClicked(event);
+    navigator.vibrate(100); // Vibrate on touch
+});
 
 function coinClicked(event) {
     const touches = event.touches || [{ clientX: event.clientX, clientY: event.clientY }];
@@ -195,151 +193,11 @@ function createFeedback(x, y, amount) {
 //#endregion
 
 //#region Shop
-document.addEventListener('DOMContentLoaded', () => {
-    const purchaseButton = document.getElementById('purchase-chest');
-    
-    if (purchaseButton) {
-        purchaseButton.addEventListener('click', confirmPurchase);
-    }
-});
-
-function confirmPurchase() {
-    const cost = 10; // Cost of the item
-    const savedCoins = parseInt(localStorage.getItem('avatar_coins'), 10) || 0;
-
-    if (savedCoins >= cost) {
-        const confirmMessage = `Are you sure you want to purchase the Chest for ${cost} coins?`;
-        const userConfirm = confirm(confirmMessage);
-
-        if (userConfirm) {
-            const coins = savedCoins - cost;
-            localStorage.setItem('avatar_coins', coins);
-            let inventory = JSON.parse(localStorage.getItem('avatar_inventory')) || [];
-            inventory.push({ 
-                name: 'Chest', 
-                image: './assets/chest.png', 
-                stats: 'Open to receive a random Item!', 
-                type: 'chest', 
-                borderColor: 'gold',
-                position: inventory.length // Save current position
-            });
-            localStorage.setItem('avatar_inventory', JSON.stringify(inventory));
-        
-            // Update displayed count
-            document.getElementById('coins').innerText = coins;
-
-        }
-    } else {
-        alert('Not enough coins!');
-    }
-}
 //#endregion
 
 //#region Inventory
-function loadInventory() {
-    const inventoryList = document.getElementById('inventory-list');
-    inventoryList.innerHTML = ''; // Clear existing items
-
-    const inventory = JSON.parse(localStorage.getItem('avatar_inventory')) || [];
-    const totalPages = Math.ceil(inventory.length / itemsPerPage); // Calculate total pages
-
-    const startIndex = (currentPage - 1) * itemsPerPage;
-    const endIndex = Math.min(startIndex + itemsPerPage, inventory.length);
-
-    for (let i = startIndex; i < endIndex; i++) {
-        const item = inventory[i];
-        const li = document.createElement('li');
-        li.className = 'inventory-item';
-        li.style.borderColor = item.borderColor; // Set the border color
-        li.style.borderWidth = '5px'; // Optional: Set the border width
-        li.style.borderStyle = 'solid'; // Optional: Set the border style
-        li.style.padding = '10px'; // Optional: Inner spacing
-        li.style.margin = '5px'; // Optional: Spacing between items
-        li.style.borderRadius = '5px'; // Optional: Rounded corners
-        
-        li.innerHTML = `
-           <div class="inventory-item-title">${item.name}</div>
-            <img src="${item.image}" alt="${item.name}" class="inventory-item-image" onclick="handlePopup('${item.name}', '${item.image}', '${item.stats}', '${item.type}', '${item.borderColor}', '${item.position}')" />
-            <div class="inventory-item-status" style="font-size: 12px; color: gray;">${item.status === 'equipped' ? '(equipped)' : ''}</div>
-        `;
-
-        inventoryList.appendChild(li);
-    }
-
-    // Display pagination controls
-    displayPagination(totalPages);
-}
-
-
-function displayPagination(totalPages) {
-    const pagination = document.getElementById('pagination-controls');
-    pagination.innerHTML = ''; // Clear existing pagination controls
-
-    // Create previous button
-    const prevButton = document.createElement('button');
-    prevButton.innerText = 'Previous';
-    prevButton.disabled = currentPage === 1; // Disable if on the first page
-    prevButton.onclick = () => {
-        if (currentPage > 1) {
-            currentPage--;
-            loadInventory(); // Refresh the inventory display
-        }
-    };
-    pagination.appendChild(prevButton);
-
-    // Page indicator
-    const pageIndicator = document.createElement('span');
-    pageIndicator.innerText = ` ${currentPage} / ${totalPages} `;
-    pagination.appendChild(pageIndicator);
-
-    // Create next button
-    const nextButton = document.createElement('button');
-    nextButton.innerText = 'Next';
-    nextButton.disabled = currentPage === totalPages; // Disable if on the last page
-    nextButton.onclick = () => {
-        if (currentPage < totalPages) {
-            currentPage++;
-            loadInventory(); // Refresh the inventory display
-        }
-    };
-    pagination.appendChild(nextButton);
-}
 //#endregion
 
 
 //#region Popups
-function handlePopup(name, image, stats, type, borderColor, position) {
-    if (type === 'chest') {
-        showChestPopup(name, image, stats, type, borderColor, position);
-    } else {
-        showItemPopup(name, image, stats, type, borderColor, position);
-    }
-    
-    // const equipButton = document.getElementById('equip-button');
-    // // equipButton.onclick = function() {
-    // //     equipItem(name, image, stats, type, borderColor, status);
-
-    // //     console.log(inventory)
-    // //     //displayInventory();
-    // // };
-}
-
-function showChestPopup(name, image, stats,type, borderColor, position) {
-    document.getElementById('popup-title').innerText = name;
-    document.getElementById('popup-image').src = image;
-    document.getElementById('popup-stats').innerText = stats; // Set the stats text
-
-    const chestPopupContent = document.querySelector('.popup-content');
-    chestPopupContent.style.borderColor = borderColor; // Set the border color
-    chestPopupContent.style.borderWidth = '5px'; // Optional: Set the border width
-    chestPopupContent.style.borderStyle = 'solid'; // Optional: Set the border style
-
-    document.getElementById('chest-popup').style.display = 'block';  
-}
-
-
-function closeChestPopup() {
-    document.getElementById('chest-popup').style.display = 'none';
-}
-
 //#endregion
