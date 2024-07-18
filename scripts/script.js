@@ -1,7 +1,8 @@
 Telegram.WebApp.ready();
 Telegram.WebApp.expand();
 document.addEventListener('DOMContentLoaded', () => {
-
+    document.body.style.touchAction = 'none';
+    document.body.style.overflow = 'hidden';
 })
 
 window.addEventListener('load', () => {
@@ -134,7 +135,7 @@ function coinClicked(event) {
 
 function updateGameState(touchCount) {
     coins += touchCount * coinsPerClick;
-    energy = Math.max(0, energy - touchCount); // Prevent negative energy
+    energy = Math.max(0, energy - touchCount);
     document.getElementById('coins').innerText = coins;
     saveCoins();
     saveEnergy();

@@ -66,17 +66,29 @@ main.active {
     position: relative;
 }
 
-#clickable-image {
+#clickable-coin {
     border: none;
     background: none;
     padding: 0;
 }
 
-#clickable-image img.clicked {
-    transform: scale(1.1); /* Scale up effect */
-    transition: transform 0.3s ease; /* Smooth transition */
+#clickable-coin img.clicked {
+    animation: pop-out 0.3s ease; /* Pop out animation */
 }
 
+@keyframes pop-out {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.3); }
+    100% { transform: scale(1); }
+}
+
+.feedback {
+    position: absolute;
+    font-size: 3rem; /* Adjust size as needed */
+    color: black; /* Change color to match your design */
+    pointer-events: none; /* Prevent interaction */
+    transition: opacity 0.6s ease-out; /* Optional for smoother fading */
+}
 
 footer {
     display: flex;
