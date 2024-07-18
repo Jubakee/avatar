@@ -58,6 +58,26 @@ main.active {
     font-weight: bold;
 }
 
+#image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    position: relative;
+}
+
+#clickable-image {
+    border: none;
+    background: none;
+    padding: 0;
+}
+
+#clickable-image img.clicked {
+    transform: scale(1.1); /* Scale up effect */
+    transition: transform 0.3s ease; /* Smooth transition */
+}
+
+
 footer {
     display: flex;
     justify-content: space-around;
@@ -123,5 +143,5 @@ footer {
 }
 
 #energy-emoji{
-    
+
 }

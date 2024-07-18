@@ -5,7 +5,9 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 window.addEventListener('load', () => {
-    loadCoins();
+loadCoins();
+loadEnergy();
+setInterval(rechargeEnergy, rechargeInterval);
 startRechargeTimer();
 setupTabEventListeners();
 });
@@ -33,9 +35,10 @@ function loadEnergy() {
         const elapsedTime = Date.now() - lastUpdateTime;
         energy += Math.floor(elapsedTime / rechargeInterval) * energyRechargeRate;
         energy = Math.min(energy, maxEnergy); // Cap energy at max
+        lastUpdateTime = Date.now() - (elapsedTime % rechargeInterval); // Adjust lastUpdateTime correctly
     }
 
-    updateEnergyBar(); // Initialize energy bar display
+    updateEnergyBar();
 }
 
 function saveCoins() {
@@ -43,6 +46,10 @@ function saveCoins() {
     localStorage.setItem('avatar_energy', energy);
     localStorage.setItem('avatar_lastupdate', Date.now());
     console.log('Saved to Local Storage.')
+}
+function saveEnergy() {
+    localStorage.setItem('avatar_energy', energy);
+    localStorage.setItem('avatar_lastupdate', Date.now());
 }
 //#endregion
 
@@ -77,10 +84,6 @@ function showTab(tabId) {
 //#endregion
 
 //#region Energy
-function startRechargeTimer() {
-    setInterval(rechargeEnergy, rechargeInterval);
-}
-
 function rechargeEnergy() {
     const now = Date.now();
     const elapsedTime = now - lastUpdateTime;
@@ -88,11 +91,12 @@ function rechargeEnergy() {
 
     if (rechargeAmount > 0) {
         energy = Math.min(energy + rechargeAmount, maxEnergy);
-        lastUpdateTime = now;
+        lastUpdateTime += Math.floor(elapsedTime / rechargeInterval) * rechargeInterval; // Adjust lastUpdateTime correctly
         updateEnergyBar();
-        saveEnergy(); 
+        saveEnergy();
     }
 }
+
 
 function saveEnergy() {
     localStorage.setItem('avatar_energy', energy);
@@ -105,4 +109,79 @@ function updateEnergyBar() {
     energyFill.style.width = `${(energy / maxEnergy) * 100}%`;
     energyValue.innerText = energy;
 }
+//#endregion
+
+//#region Coin
+document.getElementById("clickable-coin").addEventListener("click", function(event) {
+    coinClicked(event);
+    navigator.vibrate(100); // Vibrate on touch
+    console.log('good')
+});
+
+function coinClicked(event) {
+    event.preventDefault();
+    const touches = event.touches || [{ clientX: event.clientX, clientY: event.clientY }];
+    const touchCount = touches.length;
+
+    if (energy <= 0) {
+        alert("Not enough energy to click the cabbage!");
+        return;
+    }
+
+    updateGameState(touchCount);
+    animateCoin();
+    provideFeedback(touches, coinsPerClick);
+}
+
+function updateGameState(touchCount) {
+    coins += touchCount * coinsPerClick;
+    energy = Math.max(0, energy - touchCount); // Prevent negative energy
+    document.getElementById('coins').innerText = coins;
+    saveCoins();
+    saveEnergy();
+    updateEnergyBar();
+}
+
+function animateCoin() {
+    const coinImage = document.querySelector('#clickable-coin img');
+    coinImage.classList.remove('clicked');
+    void coinImage.offsetWidth;
+    coinImage.classList.add('clicked');
+    setTimeout(() => {
+        coinImage.classList.remove('clicked');
+    }, 300);
+}
+
+function provideFeedback(touches, amount) {
+    for (const touch of touches) {
+        createFeedback(touch.clientX, touch.clientY, amount);
+    }
+}
+
+function createFeedback(x, y, amount) {
+    const feedback = document.createElement('div');
+    feedback.className = 'feedback';
+    feedback.innerText = `+${amount}`; // Display the amount of coins
+    feedback.style.position = 'absolute'; // Positioning for animation
+    feedback.style.left = `${x}px`;
+    feedback.style.top = `${y}px`;
+    feedback.style.opacity = 1; // Start fully visible
+    document.body.appendChild(feedback);
+
+    // Animation for moving up and fading out
+    feedback.animate([
+        { transform: 'translateY(0)', opacity: 1 }, // Start position
+        { transform: 'translateY(-30px)', opacity: 0 } // End position
+    ], {
+        duration: 600, // Total duration of the animation
+        easing: 'ease-out',
+        fill: 'forwards' // Retain the final state
+    });
+
+    // Remove the feedback element after animation
+    setTimeout(() => {
+        feedback.remove();
+    }, 600);
+}
+
 //#endregion

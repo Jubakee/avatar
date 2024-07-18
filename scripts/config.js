@@ -1,4 +1,5 @@
 let coins = 0;
+let coinsPerClick = 1; // Coins earned per click
 let energy = 1000; // Starting energy value
 const maxEnergy = 1000; // Maximum energy value
 const energyRechargeRate = 1; // Energy recharge rate
