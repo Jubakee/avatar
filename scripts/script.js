@@ -111,25 +111,24 @@ function updateEnergyBar() {
 //#endregion
 
 //#region Coin
-document.getElementById("clickable-coin").addEventListener("touch", function(event) {
+document.getElementById("clickable-coin").addEventListener("click", function(event) {
+    event.preventDefault(); // Prevent default touch behavior
     coinClicked(event);
     navigator.vibrate(100); // Vibrate on touch
-    console.log('good')
 });
 
 function coinClicked(event) {
-    event.preventDefault();
     const touches = event.touches || [{ clientX: event.clientX, clientY: event.clientY }];
     const touchCount = touches.length;
 
     if (energy <= 0) {
-        alert("Not enough energy to click the cabbage!");
+        alert("Not enough energy to click the coin!");
         return;
     }
 
     updateGameState(touchCount);
     animateCoin();
-    provideFeedback(touches, coinsPerClick);
+    batchFeedback(touches, coinsPerClick); // Batch feedback animations
 }
 
 function updateGameState(touchCount) {
@@ -144,17 +143,23 @@ function updateGameState(touchCount) {
 function animateCoin() {
     const coinImage = document.querySelector('#clickable-coin img');
     coinImage.classList.remove('clicked');
-    void coinImage.offsetWidth;
+    void coinImage.offsetWidth; // Trigger reflow for CSS animation
     coinImage.classList.add('clicked');
-    setTimeout(() => {
-        coinImage.classList.remove('clicked');
-    }, 300);
 }
 
-function provideFeedback(touches, amount) {
+function batchFeedback(touches, amount) {
     for (const touch of touches) {
-        createFeedback(touch.clientX, touch.clientY, amount);
+        feedbackQueue.push({ x: touch.clientX, y: touch.clientY, amount });
     }
+
+    if (!feedbackQueue.length) return;
+
+    requestAnimationFrame(() => {
+        const feedbacks = feedbackQueue.splice(0, feedbackQueue.length); // Clear the queue
+        for (const feedback of feedbacks) {
+            createFeedback(feedback.x, feedback.y, feedback.amount);
+        }
+    });
 }
 
 function createFeedback(x, y, amount) {
@@ -164,7 +169,6 @@ function createFeedback(x, y, amount) {
     feedback.style.position = 'absolute'; // Positioning for animation
     feedback.style.left = `${x}px`;
     feedback.style.top = `${y}px`;
-    feedback.style.opacity = 1; // Start fully visible
     document.body.appendChild(feedback);
 
     // Animation for moving up and fading out
@@ -178,9 +182,9 @@ function createFeedback(x, y, amount) {
     });
 
     // Remove the feedback element after animation
-    setTimeout(() => {
+    feedback.addEventListener('animationend', () => {
         feedback.remove();
-    }, 600);
+    }, { once: true });
 }
 
 //#endregion

@@ -198,28 +198,24 @@ footer {
 .shop-item button {
     padding: 10px;
     width: 100%;
-    border: none;
-    background-color: green;
-    color: white;
     font-weight: bold;
+    border-style: none;
     border-radius: 8px;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
 .shop-item button:hover {
-    background-color: #0056b3;
+    background-color: green;
 }
 
 #item-description{
     padding: 10px;
     width: 80%;
     text-align: center;
-    border: none;
-    background-color: green;
-    color: white;
     font-weight: bold;
     border-radius: 8px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    font-size: 18px;
 }
