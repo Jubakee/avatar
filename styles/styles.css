@@ -127,7 +127,7 @@ footer {
 #energy-bar-container {
     position: absolute;
     text-align: center;
-    bottom: 70px; /* Adjust to be above the footer */
+    bottom: 100px; /* Adjust to be above the footer */
     width: 80%;
     padding: 0 20px; /* Add some padding if needed */
     box-sizing: border-box;
@@ -137,7 +137,7 @@ footer {
     width: 100%;
     background-color: red;
     height: 24px;
-    border-radius: 12px; /* Apply rounded corners */
+    border-radius: 8px; /* Apply rounded corners */
     overflow: hidden; /* Ensure the inner fill respects the border radius */
 }
 
@@ -145,7 +145,7 @@ footer {
     width: 100%;
     height: 100%;
     background-color: green; /* Color for the fill */
-    border-radius: 12px; /* Apply rounded corners to the fill as well */
+    border-radius: 8px; /* Apply rounded corners to the fill as well */
 
 }
 
