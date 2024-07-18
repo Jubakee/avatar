@@ -258,8 +258,8 @@ function loadInventory() {
         li.style.borderRadius = '5px'; // Optional: Rounded corners
         
         li.innerHTML = `
+           <div class="inventory-item-title">${item.name}</div>
             <img src="${item.image}" alt="${item.name}" class="inventory-item-image" onclick="handlePopup('${item.name}', '${item.image}', '${item.stats}', '${item.type}', '${item.borderColor}', '${item.position}')" />
-            <div class="inventory-item-title">${item.name}</div>
             <div class="inventory-item-status" style="font-size: 12px; color: gray;">${item.status === 'equipped' ? '(equipped)' : ''}</div>
         `;
 
@@ -304,4 +304,42 @@ function displayPagination(totalPages) {
     };
     pagination.appendChild(nextButton);
 }
+//#endregion
+
+
+//#region Popups
+function handlePopup(name, image, stats, type, borderColor, position) {
+    if (type === 'chest') {
+        showChestPopup(name, image, stats, type, borderColor, position);
+    } else {
+        showItemPopup(name, image, stats, type, borderColor, position);
+    }
+    
+    // const equipButton = document.getElementById('equip-button');
+    // // equipButton.onclick = function() {
+    // //     equipItem(name, image, stats, type, borderColor, status);
+
+    // //     console.log(inventory)
+    // //     //displayInventory();
+    // // };
+}
+
+function showChestPopup(name, image, stats,type, borderColor, position) {
+    document.getElementById('popup-title').innerText = name;
+    document.getElementById('popup-image').src = image;
+    document.getElementById('popup-stats').innerText = stats; // Set the stats text
+
+    const chestPopupContent = document.querySelector('.popup-content');
+    chestPopupContent.style.borderColor = borderColor; // Set the border color
+    chestPopupContent.style.borderWidth = '5px'; // Optional: Set the border width
+    chestPopupContent.style.borderStyle = 'solid'; // Optional: Set the border style
+
+    document.getElementById('chest-popup').style.display = 'block';  
+}
+
+
+function closeChestPopup() {
+    document.getElementById('chest-popup').style.display = 'none';
+}
+
 //#endregion
