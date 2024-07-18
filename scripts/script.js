@@ -1,8 +1,7 @@
 Telegram.WebApp.ready();
 Telegram.WebApp.expand();
 document.addEventListener('DOMContentLoaded', () => {
-    document.body.style.touchAction = 'none';
-    document.body.style.overflow = 'hidden';
+
 })
 
 window.addEventListener('load', () => {

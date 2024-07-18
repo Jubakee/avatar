@@ -7,8 +7,6 @@ body {
     height: 100vh;
     display: flex;
     flex-direction: column;
-    touch-action: none; /* Prevent default touch actions */
-    overflow: hidden; /* Prevent scrolling */
 }
 
 main {
@@ -22,6 +20,36 @@ main {
 
 main.active {
     display: flex; /* Only display the active tab */
+}
+
+#energy-bar-container {
+    position: absolute;
+    text-align: center;
+    bottom: 100px; /* Adjust to be above the footer */
+    width: 80%;
+    padding: 0 20px; /* Add some padding if needed */
+    box-sizing: border-box;
+}
+
+#energy-bar {
+    width: 100%;
+    background-color: red;
+    height: 24px;
+    border-radius: 8px; /* Apply rounded corners */
+    overflow: hidden; /* Ensure the inner fill respects the border radius */
+}
+
+#energy-fill {
+    width: 100%;
+    height: 100%;
+    background-color: green; /* Color for the fill */
+    border-radius: 8px; /* Apply rounded corners to the fill as well */
+
+}
+
+#energy-value-container {
+    margin-top: 8px;
+    font-weight: bold;
 }
 
 #header {
@@ -124,36 +152,4 @@ footer {
     color: white;
 }
 
-#energy-bar-container {
-    position: absolute;
-    text-align: center;
-    bottom: 100px; /* Adjust to be above the footer */
-    width: 80%;
-    padding: 0 20px; /* Add some padding if needed */
-    box-sizing: border-box;
-}
 
-#energy-bar {
-    width: 100%;
-    background-color: red;
-    height: 24px;
-    border-radius: 8px; /* Apply rounded corners */
-    overflow: hidden; /* Ensure the inner fill respects the border radius */
-}
-
-#energy-fill {
-    width: 100%;
-    height: 100%;
-    background-color: green; /* Color for the fill */
-    border-radius: 8px; /* Apply rounded corners to the fill as well */
-
-}
-
-#energy-value-container {
-    margin-top: 8px;
-    font-weight: bold;
-}
-
-#energy-emoji{
-
-}
