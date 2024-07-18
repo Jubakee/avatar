@@ -7,3 +7,4 @@ const rechargeInterval = 3000; // Recharge every 3 seconds
 let lastUpdateTime = Date.now(); // Track last update time
 
 const feedbackQueue = [];
+let inventory = [];

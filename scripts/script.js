@@ -117,6 +117,12 @@ document.getElementById("clickable-coin").addEventListener("touch", function(eve
     navigator.vibrate(100); // Vibrate on touch
 });
 
+// document.getElementById("clickable-coin").addEventListener("click", function(event) {
+//     event.preventDefault(); // Prevent default touch behavior
+//     coinClicked(event);
+//     navigator.vibrate(100); // Vibrate on touch
+// });
+
 function coinClicked(event) {
     const touches = event.touches || [{ clientX: event.clientX, clientY: event.clientY }];
     const touchCount = touches.length;
@@ -187,4 +193,43 @@ function createFeedback(x, y, amount) {
     }, { once: true });
 }
 
+//#endregion
+
+//#region Shop
+document.getElementById("purchase-chest").addEventListener("click", function(event) {
+    event.preventDefault(); // Prevent default touch behavior
+    confirmPurchase(event);
+    console.log('click')
+});
+
+function confirmPurchase() {
+    const cost = 10; // Cost of the item
+    const savedCoins = parseInt(localStorage.getItem('avatar_counter'), 10) || 0;
+
+    if (savedCoins >= cost) {
+        const confirmMessage = `Are you sure you want to purchase the Chest for ${cost} coins?`;
+        const userConfirm = confirm(confirmMessage);
+
+        if (userConfirm) {
+            const coins = savedCoins - cost;
+            localStorage.setItem('avatar_coins', coins);
+            let inventory = JSON.parse(localStorage.getItem('inventory')) || [];
+            inventory.push({ 
+                name: 'Chest', 
+                image: './assets/chest.png', 
+                stats: 'Open to receive a random Item!', 
+                type: 'chest', 
+                borderColor: 'gold',
+                position: inventory.length // Save current position
+            });
+            localStorage.setItem('inventory', JSON.stringify(inventory));
+        
+            // Update displayed count
+            document.getElementById('count').innerText = count;
+
+        }
+    } else {
+        alert('Not enough coins!');
+    }
+}
 //#endregion
