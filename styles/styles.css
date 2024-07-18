@@ -3,6 +3,8 @@ body {
     margin: 0;
     padding: 0;
     background-color: #f0f0f0;
+    touch-action: none; /* Prevent default touch actions */
+    overflow: hidden; /* Prevent scrolling */
 }
 
 #header {
@@ -29,12 +31,12 @@ body {
     margin-left: 20px;
 }
 
-#counter-icon, #level-icon {
+#coins-icon, #level-icon {
     font-size: 24px;
     margin-right: 8px;
 }
 
-.counter-value {
+.coins-value {
     font-size: 18px;
     font-weight: bold;
 }
