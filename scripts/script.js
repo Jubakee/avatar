@@ -95,7 +95,6 @@ function rechargeEnergy() {
     }
 }
 
-
 function saveEnergy() {
     localStorage.setItem('avatar_energy', energy);
     localStorage.setItem('avatar_lastupdate', Date.now());
@@ -111,6 +110,7 @@ function updateEnergyBar() {
 
 //#region Coin
 document.getElementById("clickable-coin").addEventListener("touchstart", function(event) {
+    event.preventDefault()
     coinClicked(event);
     navigator.vibrate(100); // Vibrate on touch
 });
