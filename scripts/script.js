@@ -5,11 +5,32 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 window.addEventListener('load', () => {
+//resetGame();
 loadCoins();
 loadEnergy();
+loadLevel();
 setInterval(rechargeEnergy, rechargeInterval);
 setupTabEventListeners();
 });
+
+//#region Reset Game
+function resetGame() {
+    coins = 0;
+    energy = 1000; // Reset energy to starting value
+    level = 1; // Reset level to starting value
+    coinsPerClick = 1; // Reset coins per click
+    // Clear saved data from local storage
+    localStorage.removeItem('avatar_coins');
+    localStorage.removeItem('avatar_energy');
+    localStorage.removeItem('avatar_lastupdate');
+
+    // Update the UI
+    document.getElementById('coins').innerText = coins;
+    updateEnergyBar();
+    updateLevelDisplay();
+}
+
+//#endregion
 
 //#region Load & Save
 function loadCoins() {
@@ -37,6 +58,10 @@ function loadEnergy() {
     }
 
     updateEnergyBar();
+}
+
+function loadLevel(){
+    updateLevel();
 }
 
 function saveCoins() {
@@ -135,6 +160,7 @@ function updateGameState(touchCount) {
     saveCoins();
     saveEnergy();
     updateEnergyBar();
+    updateLevel();
 }
 
 function animateCoin() {
@@ -153,37 +179,52 @@ function batchFeedback(touches, amount) {
 
     requestAnimationFrame(() => {
         const feedbacks = feedbackQueue.splice(0, feedbackQueue.length); // Clear the queue
-        for (const feedback of feedbacks) {
+        feedbacks.forEach(feedback => {
             createFeedback(feedback.x, feedback.y, feedback.amount);
-        }
+        });
     });
 }
+
 
 function createFeedback(x, y, amount) {
     const feedback = document.createElement('div');
     feedback.className = 'feedback';
     feedback.innerText = `+${amount}`; // Display the amount of coins
-    feedback.style.position = 'absolute'; // Positioning for animation
     feedback.style.left = `${x}px`;
     feedback.style.top = `${y}px`;
     document.body.appendChild(feedback);
 
-    // Animation for moving up and fading out
-    feedback.animate([
-        { transform: 'translateY(0)', opacity: 1 }, // Start position
-        { transform: 'translateY(-30px)', opacity: 0 } // End position
-    ], {
-        duration: 600, // Total duration of the animation
-        easing: 'ease-out',
-        fill: 'forwards' // Retain the final state
+    // Trigger feedback animation
+    requestAnimationFrame(() => {
+        feedback.classList.add('show');
     });
 
     // Remove the feedback element after animation
-    feedback.addEventListener('animationend', () => {
-        feedback.remove();
-    }, { once: true });
+    setTimeout(() => {
+        feedback.classList.remove('show');
+        feedback.classList.add('hidden');
+        feedback.addEventListener('transitionend', () => {
+            feedback.remove();
+        }, { once: true });
+    }, 600); // Match the duration of the animation
 }
 
+
+//#endregion
+
+//#region Levels
+function updateLevel() {
+    while (coins >= level * levelUpThreshold) {
+        level++;
+        coinsPerClick = level; // Increase coins per click
+        updateLevelDisplay(); // Update level display
+    }
+}
+
+function updateLevelDisplay() {
+    const levelDisplay = document.getElementById('level-value');
+    levelDisplay.innerText = `Lvl: ${level}`; // Correctly update the displayed level
+}
 //#endregion
 
 //#region Shop
