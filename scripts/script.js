@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 window.addEventListener('load', () => {
-    resetGame();
+    //resetGame();
     loadCoins();
     loadEnergy();
     loadLevel();
@@ -76,6 +76,7 @@ function saveEnergy() {
     localStorage.setItem('avatar_energy', energy);
     localStorage.setItem('avatar_lastupdate', Date.now());
 }
+
 //#endregion
 
 //#region Tabs
