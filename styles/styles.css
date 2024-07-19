@@ -11,10 +11,8 @@ body {
     justify-content: center;
     text-align: center;
     touch-action: none; /* Disable swipe gestures */
-    overflow-y: hidden;
-    overflow-x: hidden;
+    overflow: hidden; /* Combined overflow-x and overflow-y */
 }
-
 
 main {
     flex-grow: 1;
@@ -22,20 +20,22 @@ main {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+    touch-action: none; /* Disable swipe gestures */
+    overflow: hidden; /* Combined overflow-x and overflow-y */
 }
 
 main.active {
     display: flex; /* Only display the active tab */
+    touch-action: none; /* Disable swipe gestures */
+    overflow: hidden; /* Combined overflow-x and overflow-y */
 }
-
-
 
 #energy-bar-container {
     position: absolute;
     text-align: center;
     bottom: 100px; /* Adjust to be above the footer */
     width: 80%;
-    padding: 0 20px; /* Add some padding if needed */
+    padding: 0 20px;
     box-sizing: border-box;
     font-size: 18px;
 }
@@ -45,13 +45,13 @@ main.active {
     background-color: red;
     height: 24px;
     overflow: hidden; /* Ensure the inner fill respects the border radius */
+    border-radius: 12px; /* Optional rounded corners */
 }
 
 #energy-fill {
     width: 100%;
     height: 100%;
     background-color: green; /* Color for the fill */
-
 }
 
 #energy-value-container {
@@ -121,7 +121,6 @@ main.active {
     transition: opacity 0.6s ease-out, transform 0.6s ease-out;
     transform: translateY(0); /* Start at the original position */
     /* text-shadow: 0 0 5px rgba(0, 0, 0, 0.7); */
-
 }
 
 .feedback.show {
@@ -134,7 +133,6 @@ main.active {
 .feedback.hidden {
     opacity: 0; /* Fade out */
 }
-
 
 footer {
     display: flex;
@@ -151,7 +149,7 @@ footer {
     flex: 1;
     text-align: center;
     padding: 10px;
-    margin: 0px 10px;
+    margin: 0 10px;
     border-radius: 10px;
     transition: background-color 0.3s, color 0.3s;
 }
@@ -193,4 +191,3 @@ footer {
 .hidden {
     display: none;
 }
-
