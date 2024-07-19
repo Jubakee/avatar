@@ -12,5 +12,13 @@ let level = 1; // Starting level
 const levelUpThreshold = 10000; // Coins needed to level up
 
 
+
 let inventory = [];
+let currentPage = 1; // Keep track of the current page
+const itemsPerPage = 12; // Set the number of items per page
+
+
+const items = [
+    { title: 'Wizard Hat', image: './assets/hat1.png', description: '+20 💵 per hour', type: 'item', rarity: 'normal'},
+];
 
