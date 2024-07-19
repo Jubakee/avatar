@@ -33,6 +33,7 @@ main.active {
     width: 80%;
     padding: 0 20px; /* Add some padding if needed */
     box-sizing: border-box;
+    font-size: 18px;
 }
 
 #energy-bar {
@@ -71,6 +72,7 @@ main.active {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     width: 100%;
     box-sizing: border-box;
+    font-size: 18px;
 }
 
 #coins-container, #level-container {
@@ -232,4 +234,34 @@ footer {
 
 .inventory-item-name {
     font-weight: bold; /* Bold item name */
+}
+
+
+#shop-items {
+    display: flex; /* Use flexbox for the shop items container */
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items horizontally */
+}
+
+.shop-item {
+    display: flex; /* Use flexbox for each shop item */
+    flex-direction: column; /* Stack image, title, and button vertically */
+    align-items: center; /* Center items horizontally */
+    text-align: center; /* Center text within the item */
+    margin: 10px; /* Space between items */
+}
+
+.shop-item-image {
+    width: 100px; /* Adjust as needed */
+    height: auto; /* Maintain aspect ratio */
+}
+
+.shop-item button {
+    margin-top: 10px; /* Space above the button */
+    padding: 10px 15px;
+    background-color: green; /* Button background */
+    color: white; /* Button text color */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
