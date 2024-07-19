@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 window.addEventListener('load', () => {
-//resetGame();
+resetGame();
 loadCoins();
 loadEnergy();
 loadLevel();
@@ -140,6 +140,7 @@ document.getElementById("clickable-coin").addEventListener("click", function(eve
 });
 
 function coinClicked(event) {
+    event.preventDefault()
     const touches = event.touches || [{ clientX: event.clientX, clientY: event.clientY }];
     const touchCount = touches.length;
 
