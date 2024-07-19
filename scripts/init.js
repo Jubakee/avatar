@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 window.addEventListener('load', () => {
-    //resetGame();
+    resetGame();
     loadCoins();
     loadEnergy();
     loadLevel();
