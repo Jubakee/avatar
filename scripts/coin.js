@@ -1,14 +1,34 @@
 //#region Coin
+const activeTouches = new Set();
+
 document.getElementById("clickable-coin").addEventListener("touchstart", function(event) {
     event.preventDefault();
-    coinClicked(event);
+    handleTouches(event, "start");
     if (navigator.vibrate) navigator.vibrate(100); // Vibrate on touch
 });
 
-// document.getElementById("clickable-coin").addEventListener("click", function(event) {
-//     coinClicked(event);
-//     if (navigator.vibrate) navigator.vibrate(100); // Vibrate on click
-// });
+document.getElementById("clickable-coin").addEventListener("touchend", function(event) {
+    handleTouches(event, "end");
+});
+
+document.getElementById("clickable-coin").addEventListener("click", function(event) {
+    coinClicked(event);
+    if (navigator.vibrate) navigator.vibrate(100); // Vibrate on click
+});
+
+function handleTouches(event, type) {
+    const touches = event.changedTouches;
+    for (const touch of touches) {
+        if (type === "start") {
+            if (!activeTouches.has(touch.identifier)) {
+                activeTouches.add(touch.identifier);
+                coinClicked(touch);
+            }
+        } else if (type === "end") {
+            activeTouches.delete(touch.identifier);
+        }
+    }
+}
 
 function coinClicked(event) {
     event.preventDefault();

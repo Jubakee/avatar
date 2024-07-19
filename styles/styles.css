@@ -10,10 +10,13 @@ body {
     align-items: center;
     justify-content: center;
     text-align: center;
-    overflow-y: auto; /* Enable vertical scrolling */
+    overflow: hidden; /* Hides any overflow content */
+
+
 }
 
 main {
+    overflow-y: auto;
     flex-grow: 1;
     display: none;
     flex-direction: column;
@@ -25,6 +28,40 @@ main.active {
     display: flex; /* Only display the active tab */
 }
 
+#stats.item-container {
+
+    background-color: rgba(0, 0, 0, 0.1); /* Semi-transparent background */
+    padding: 10px;
+    border-radius: 8px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columns */
+    gap: 20px;
+    border: 2px solid rgba(0, 0, 0, 0.2); /* Border for the inventory container */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for a nice effect */
+    margin-top: 100px;
+}
+
+.item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    background-color: white;
+    border: 1px solid rgba(0, 0, 0, 0.1); /* Border for individual items */
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for items */
+}
+
+.item img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.item-name {
+    font-weight: bold;
+}
 
 
 #energy-bar-container {
@@ -125,7 +162,7 @@ main.active {
 
 .feedback.show {
     opacity: 1; /* Make it visible */
-    transform: translateY(-30px); /* Move up */
+    transform: translateY(-100px); /* Move up */
     /* color: green;
     text-shadow: 0 0 15px rgba(0, 255, 0, 0.8); Glowing effect */
 }
@@ -153,7 +190,6 @@ footer {
     margin: 0px 10px;
     border-radius: 10px;
     transition: background-color 0.3s, color 0.3s;
-    overflow: hidden; /* Hides any overflow content */
 }
 
 .tab img {
@@ -167,7 +203,7 @@ footer {
 }
 
 .active-tab {
-    overflow-y: auto;
+
     background-color: black;
     border-radius: 5px;
     color: white;
