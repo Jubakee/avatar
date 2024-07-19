@@ -5,24 +5,6 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 window.addEventListener('load', () => {
-    // Handle the landing page transition
-    const landingPage = document.getElementById('landing-page');
-    const mainContent = document.getElementById('main-content');
-
-    setTimeout(() => {
-        landingPage.style.opacity = '0'; // Fade out landing page
-        setTimeout(() => {
-            landingPage.classList.add('hidden'); // Hide landing page
-            mainContent.classList.remove('hidden'); // Show main content
-            resetGame();
-            loadCoins();
-            loadEnergy();
-            loadLevel();
-            setInterval(rechargeEnergy, rechargeInterval);
-            setupTabEventListeners();
-        }, 500); // Match with CSS transition duration
-    }, 3000); // Show landing page for 10 seconds
-
 resetGame();
 loadCoins();
 loadEnergy();

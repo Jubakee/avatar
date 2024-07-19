@@ -8,72 +8,74 @@
     <link rel="stylesheet" href="styles/styles.css">
 </head>
 <body>
-    <div id="landing-page" class="landing-page">
-        <h1>Welcome to the Avatar Game!</h1>
+    <div id="header">
+        <div id="level-container">
+            <span id="level-icon">🏆</span>
+            <span id="level-value">Lvl: 1</span>
+        </div>
+        <div id="coins-container">
+            <span id="coins-icon">💵</span>
+            <span id="coins" class="coins-value">0</span>
+        </div>
     </div>
 
-    <div id="main-content" class="hidden">
-        <div id="header">
-            <div id="level-container">
-                <span id="level-icon">🏆</span>
-                <span id="level-value">Lvl: 1</span>
-            </div>
-            <div id="coins-container">
-                <span id="coins-icon">💵</span>
-                <span id="coins" class="coins-value">0</span>
-            </div>
+    <main id="tab1" class="active"> 
+        <div id="image-container">
+            <button id="clickable-coin">
+                <img width="280" src="./assets/coin.png" alt="coin">
+            </button>
         </div>
 
-        <main id="tab1" class="active"> 
-            <div id="image-container">
-                <button id="clickable-coin">
-                    <img width="280" src="./assets/coin.png" alt="coin">
-                </button>
+        <div id="energy-bar-container">
+            <div id="energy-bar">
+                <div id="energy-fill"></div>
             </div>
+            <div id="energy-value-container">
+                <span id="energy-value">
+                    <span id="energy-emoji">⚡</span>
+                    <span id="energy-count">1000</span> / <span id="max-energy">1000</span>
+                </span>
+            </div>
+        </div>
+    </main>
 
-            <div id="energy-bar-container">
-                <div id="energy-bar">
-                    <div id="energy-fill"></div>
-                </div>
-                <div id="energy-value-container">
-                    <span id="energy-value">
-                        <span id="energy-emoji">⚡</span>
-                        <span id="energy-count">1000</span> / <span id="max-energy">1000</span>
-                    </span>
-                </div>
-            </div>
-        </main>
+    <main id="tab2">
+    </main>
+    
+    
+    <main id="tab3">
+    </main>
 
-        <main id="tab2"></main>
-        <main id="tab3"></main>
-        <main id="tab4"></main>
-        <main id="tab5"></main>
+    <main id="tab4">
+    </main>
 
-        <footer>
-            <div class="tab active-tab" onclick="showTab('tab1');" id="tab1-btn">
-                <img src="./assets/icon1.png" alt="icon">
-                <span>Earn</span>
-            </div>
-            <div class="tab" onclick="showTab('tab2');" id="tab2-btn">
-                <img src="./assets/icon2.png" alt="icon">
-                <span>Shop</span>
-            </div>
-            <div class="tab" onclick="showTab('tab3');" id="tab3-btn">
-                <img src="./assets/icon3.png" alt="icon">
-                <span>Bag</span>
-            </div>
-            <div class="tab" onclick="showTab('tab4');" id="tab4-btn">
-                <img src="./assets/icon4.png" alt="icon">
-                <span>Avatar</span>
-            </div>
-            <div class="tab" onclick="showTab('tab5');" id="tab5-btn">
-                <img src="./assets/icon5.png" alt="icon">
-                <span>Rewards</span>
-            </div>
-        </footer>
+    <main id="tab5">
+    </main>
 
-        <div id="notification" class="notification hidden"></div>
-    </div>
+    <footer>
+        <div class="tab active-tab" onclick="showTab('tab1');" id="tab1-btn">
+            <img src="./assets/icon1.png" alt="icon">
+            <span>Earn</span>
+        </div>
+        <div class="tab" onclick="showTab('tab2');" id="tab2-btn">
+            <img src="./assets/icon2.png" alt="icon">
+            <span>Shop</span>
+        </div>
+        <div class="tab" onclick="showTab('tab3');" id="tab3-btn">
+            <img src="./assets/icon3.png" alt="icon">
+            <span>Bag</span>
+        </div>
+        <div class="tab" onclick="showTab('tab4');" id="tab4-btn">
+            <img src="./assets/icon4.png" alt="icon">
+            <span>Avatar</span>
+        </div>
+        <div class="tab" onclick="showTab('tab5');" id="tab5-btn">
+            <img src="./assets/icon5.png" alt="icon">
+            <span>Rewards</span>
+        </div>
+    </footer>
+
+    <div id="notification" class="notification hidden"></div>
 
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script src="scripts/script.js"></script>
