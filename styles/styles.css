@@ -10,7 +10,11 @@ body {
     align-items: center;
     justify-content: center;
     text-align: center;
+    touch-action: none; /* Disable swipe gestures */
+    overflow-y: hidden;
+    overflow-x: hidden;
 }
+
 
 main {
     flex-grow: 1;
@@ -40,7 +44,6 @@ main.active {
     width: 100%;
     background-color: red;
     height: 24px;
-    border-radius: 8px; /* Apply rounded corners */
     overflow: hidden; /* Ensure the inner fill respects the border radius */
 }
 
@@ -48,7 +51,6 @@ main.active {
     width: 100%;
     height: 100%;
     background-color: green; /* Color for the fill */
-    border-radius: 8px; /* Apply rounded corners to the fill as well */
 
 }
 
@@ -192,76 +194,3 @@ footer {
     display: none;
 }
 
-#inventory-container {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    padding: 20px;
-    background-color: #f0f0f0;
-    border: 2px solid #ccc;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    max-height: 60vh; /* Set to 80% of the viewport height */
-    overflow-y: auto; /* Enable vertical scrolling */
-}
-
-#inventory-list {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Change to 3 columns */
-    gap: 10px;
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-}
-
-.inventory-item {
-    background-color: white; /* Item background */
-    border: 1px solid #999; /* Item border */
-    border-radius: 8px; /* Rounded corners for items */
-    text-align: center; /* Center text */
-    padding: 10px; /* Add some padding */
-    transition: transform 0.2s; /* Animation on hover */
-}
-
-.inventory-item:hover {
-    transform: scale(1.05); /* Scale up on hover */
-}
-
-.inventory-item img {
-    width: 50px; /* Adjust image size */
-    height: auto; /* Maintain aspect ratio */
-}
-
-.inventory-item-name {
-    font-weight: bold; /* Bold item name */
-}
-
-
-#shop-items {
-    display: flex; /* Use flexbox for the shop items container */
-    flex-direction: column; /* Stack items vertically */
-    align-items: center; /* Center items horizontally */
-}
-
-.shop-item {
-    display: flex; /* Use flexbox for each shop item */
-    flex-direction: column; /* Stack image, title, and button vertically */
-    align-items: center; /* Center items horizontally */
-    text-align: center; /* Center text within the item */
-    margin: 10px; /* Space between items */
-}
-
-.shop-item-image {
-    width: 100px; /* Adjust as needed */
-    height: auto; /* Maintain aspect ratio */
-}
-
-.shop-item button {
-    margin-top: 10px; /* Space above the button */
-    padding: 10px 15px;
-    background-color: green; /* Button background */
-    color: white; /* Button text color */
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
