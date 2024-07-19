@@ -189,3 +189,47 @@ footer {
 .hidden {
     display: none;
 }
+
+#inventory-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px;
+    background-color: #f0f0f0;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-height: 60vh; /* Set to 80% of the viewport height */
+    overflow-y: auto; /* Enable vertical scrolling */
+}
+
+#inventory-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Change to 3 columns */
+    gap: 10px;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.inventory-item {
+    background-color: white; /* Item background */
+    border: 1px solid #999; /* Item border */
+    border-radius: 8px; /* Rounded corners for items */
+    text-align: center; /* Center text */
+    padding: 10px; /* Add some padding */
+    transition: transform 0.2s; /* Animation on hover */
+}
+
+.inventory-item:hover {
+    transform: scale(1.05); /* Scale up on hover */
+}
+
+.inventory-item img {
+    width: 50px; /* Adjust image size */
+    height: auto; /* Maintain aspect ratio */
+}
+
+.inventory-item-name {
+    font-weight: bold; /* Bold item name */
+}

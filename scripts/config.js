@@ -10,3 +10,7 @@ const feedbackQueue = [];
 
 let level = 1; // Starting level
 const levelUpThreshold = 10000; // Coins needed to level up
+
+
+let inventory = [];
+

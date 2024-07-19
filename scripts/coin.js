@@ -5,10 +5,10 @@ document.getElementById("clickable-coin").addEventListener("touchstart", functio
     if (navigator.vibrate) navigator.vibrate(100); // Vibrate on touch
 });
 
-document.getElementById("clickable-coin").addEventListener("click", function(event) {
-    coinClicked(event);
-    if (navigator.vibrate) navigator.vibrate(100); // Vibrate on click
-});
+// document.getElementById("clickable-coin").addEventListener("click", function(event) {
+//     coinClicked(event);
+//     if (navigator.vibrate) navigator.vibrate(100); // Vibrate on click
+// });
 
 function coinClicked(event) {
     event.preventDefault();
