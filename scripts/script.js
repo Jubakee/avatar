@@ -1,16 +1,20 @@
+
+
+// Initialize the Telegram WebApp
 Telegram.WebApp.ready();
 Telegram.WebApp.expand();
-document.addEventListener('DOMContentLoaded', () => {
 
-})
+document.addEventListener('DOMContentLoaded', () => {
+    // Code to run on DOMContentLoaded if needed
+});
 
 window.addEventListener('load', () => {
-resetGame();
-loadCoins();
-loadEnergy();
-loadLevel();
-setInterval(rechargeEnergy, rechargeInterval);
-setupTabEventListeners();
+    resetGame();
+    loadCoins();
+    loadEnergy();
+    loadLevel();
+    setInterval(rechargeEnergy, rechargeInterval);
+    setupTabEventListeners();
 });
 
 //#region Reset Game
@@ -19,6 +23,7 @@ function resetGame() {
     energy = 1000; // Reset energy to starting value
     level = 1; // Reset level to starting value
     coinsPerClick = 1; // Reset coins per click
+
     // Clear saved data from local storage
     localStorage.removeItem('avatar_coins');
     localStorage.removeItem('avatar_energy');
@@ -29,7 +34,6 @@ function resetGame() {
     updateEnergyBar();
     updateLevelDisplay();
 }
-
 //#endregion
 
 //#region Load & Save
@@ -60,15 +64,14 @@ function loadEnergy() {
     updateEnergyBar();
 }
 
-function loadLevel(){
+function loadLevel() {
     updateLevel();
 }
 
 function saveCoins() {
     localStorage.setItem('avatar_coins', coins);
-    localStorage.setItem('avatar_energy', energy);
-    localStorage.setItem('avatar_lastupdate', Date.now());
 }
+
 function saveEnergy() {
     localStorage.setItem('avatar_energy', energy);
     localStorage.setItem('avatar_lastupdate', Date.now());
@@ -81,7 +84,6 @@ function setupTabEventListeners() {
 
     tabButtons.forEach(button => {
         const tabId = button.id.replace('-btn', '');
-        
         button.addEventListener('click', () => showTab(tabId));
     });
 }
@@ -122,25 +124,27 @@ function rechargeEnergy() {
 function updateEnergyBar() {
     const energyFill = document.getElementById('energy-fill');
     const energyValue = document.getElementById('energy-count');
-    energyFill.style.width = `${(energy / maxEnergy) * 100}%`;
-    energyValue.innerText = energy;
+    if (energyFill && energyValue) {
+        energyFill.style.width = `${(energy / maxEnergy) * 100}%`;
+        energyValue.innerText = energy;
+    }
 }
 //#endregion
 
 //#region Coin
 document.getElementById("clickable-coin").addEventListener("touchstart", function(event) {
-    event.preventDefault()
+    event.preventDefault();
     coinClicked(event);
-    navigator.vibrate(100); // Vibrate on touch
+    if (navigator.vibrate) navigator.vibrate(100); // Vibrate on touch
 });
 
 document.getElementById("clickable-coin").addEventListener("click", function(event) {
     coinClicked(event);
-    navigator.vibrate(100); // Vibrate on touch
+    if (navigator.vibrate) navigator.vibrate(100); // Vibrate on click
 });
 
 function coinClicked(event) {
-    event.preventDefault()
+    event.preventDefault();
     const touches = event.touches || [{ clientX: event.clientX, clientY: event.clientY }];
     const touchCount = touches.length;
 
@@ -166,9 +170,11 @@ function updateGameState(touchCount) {
 
 function animateCoin() {
     const coinImage = document.querySelector('#clickable-coin img');
-    coinImage.classList.remove('clicked');
-    void coinImage.offsetWidth; // Trigger reflow for CSS animation
-    coinImage.classList.add('clicked');
+    if (coinImage) {
+        coinImage.classList.remove('clicked');
+        void coinImage.offsetWidth; // Trigger reflow for CSS animation
+        coinImage.classList.add('clicked');
+    }
 }
 
 function batchFeedback(touches, amount) {
@@ -185,7 +191,6 @@ function batchFeedback(touches, amount) {
         });
     });
 }
-
 
 function createFeedback(x, y, amount) {
     const feedback = document.createElement('div');
@@ -209,8 +214,6 @@ function createFeedback(x, y, amount) {
         }, { once: true });
     }, 600); // Match the duration of the animation
 }
-
-
 //#endregion
 
 //#region Levels
@@ -224,25 +227,29 @@ function updateLevel() {
 
 function updateLevelDisplay() {
     const levelDisplay = document.getElementById('level-value');
-    levelDisplay.innerText = `Lvl: ${level}`; // Correctly update the displayed level
+    if (levelDisplay) {
+        levelDisplay.innerText = `Lvl: ${level}`; // Correctly update the displayed level
+    }
 }
 //#endregion
 
 //#region Shop
+// Implement shop functionality if needed
 //#endregion
 
 //#region Inventory
+// Implement inventory functionality if needed
 //#endregion
-
 
 //#region Popups
 function showNotification(message) {
     const notification = document.getElementById('notification');
-    notification.innerText = message;
-    notification.classList.add('show');
-    setTimeout(() => {
-        notification.classList.remove('show');
-    }, 5000); // Hide the notification after 5 seconds
+    if (notification) {
+        notification.innerText = message;
+        notification.classList.add('show');
+        setTimeout(() => {
+            notification.classList.remove('show');
+        }, 5000); // Hide the notification after 5 seconds
+    }
 }
-
 //#endregion
