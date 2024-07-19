@@ -10,13 +10,14 @@ body {
     align-items: center;
     justify-content: center;
     text-align: center;
-    overflow: hidden; /* Hides any overflow content */
+    overflow-y: auto;
 
 
 }
 
 main {
-    overflow-y: auto;
+    overflow: hidden; /* Hides any overflow content */
+
     flex-grow: 1;
     display: none;
     flex-direction: column;
@@ -26,19 +27,23 @@ main {
 
 main.active {
     display: flex; /* Only display the active tab */
+    overflow: hidden; /* Hides any overflow content */
+
 }
 
 #stats.item-container {
-
     background-color: rgba(0, 0, 0, 0.1); /* Semi-transparent background */
-    padding: 10px;
+    padding: 10px; /* Increased padding for better spacing */
     border-radius: 8px;
     display: grid;
     grid-template-columns: repeat(4, 1fr); /* 4 columns */
-    gap: 20px;
+    gap: 10px; /* Reduced gap for better fit */
     border: 2px solid rgba(0, 0, 0, 0.2); /* Border for the inventory container */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for a nice effect */
     margin-top: 100px;
+    width: 80%; /* Set the width to 80% of the page */
+    margin: 100px auto 0; /* Center the container */
+    overflow: hidden; /* Hide overflow to ensure content fits */
 }
 
 .item {
@@ -50,19 +55,21 @@ main.active {
     border: 1px solid rgba(0, 0, 0, 0.1); /* Border for individual items */
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for items */
+    overflow: hidden; /* Hide overflow within items */
 }
 
 .item img {
-    width: 100px;
-    height: 100px;
+    width: 100%; /* Scale image to fit within the item */
+    height: auto; /* Maintain aspect ratio */
+    max-height: 100px; /* Restrict maximum height to avoid overflow */
     object-fit: cover;
     margin-bottom: 10px;
 }
 
 .item-name {
     font-weight: bold;
+    text-align: center;
 }
-
 
 #energy-bar-container {
     position: absolute;
