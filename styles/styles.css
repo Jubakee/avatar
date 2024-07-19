@@ -16,8 +16,6 @@ body {
 }
 
 main {
-    overflow: hidden; /* Hides any overflow content */
-
     flex-grow: 1;
     display: none;
     flex-direction: column;
@@ -27,7 +25,6 @@ main {
 
 main.active {
     display: flex; /* Only display the active tab */
-    overflow: hidden; /* Hides any overflow content */
 
 }
 
@@ -59,7 +56,7 @@ main.active {
 }
 
 .item img {
-    width: 100%; /* Scale image to fit within the item */
+    width: 80%; /* Scale image to fit within the item */
     height: auto; /* Maintain aspect ratio */
     max-height: 100px; /* Restrict maximum height to avoid overflow */
     object-fit: cover;
