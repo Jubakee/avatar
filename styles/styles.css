@@ -124,7 +124,7 @@ main.active {
 
 .feedback.show {
     opacity: 1; /* Make it visible */
-    transform: translateY(-100px); /* Move up */
+    transform: translateY(100px); /* Move up */
     /* color: green;
     text-shadow: 0 0 15px rgba(0, 255, 0, 0.8); Glowing effect */
 }
