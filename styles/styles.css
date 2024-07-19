@@ -10,7 +10,6 @@ body {
     align-items: center;
     justify-content: center;
     text-align: center;
-    overflow-y: auto; /* Enable vertical scrolling */
 }
 
 main {
@@ -19,12 +18,10 @@ main {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    overflow-y: auto; /* Enable vertical scrolling */
 }
 
 main.active {
     display: flex; /* Only display the active tab */
-    overflow-y: auto; /* Enable vertical scrolling */
 }
 
 
@@ -155,7 +152,6 @@ footer {
     margin: 0px 10px;
     border-radius: 10px;
     transition: background-color 0.3s, color 0.3s;
-    overflow: hidden; /* Hides any overflow content */
 }
 
 .tab img {
@@ -169,7 +165,6 @@ footer {
 }
 
 .active-tab {
-    overflow-y: auto;
     background-color: black;
     border-radius: 5px;
     color: white;
