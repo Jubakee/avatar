@@ -1,10 +1,10 @@
 #shop-container {
     padding: 20px;
     background-color: #f8f8f8;
-    margin-top: 50px;
+    margin-top: 30px;
     display: grid;
     grid-template-columns: repeat(3, 1fr); /* 3 columns */
-    gap: 10px; /* Space between items */
+    gap: 20px; /* Space between items */
     justify-content: center;
     margin-bottom: 100px;
     overflow-y: auto;
@@ -23,9 +23,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
     padding: 10px;
     box-sizing: border-box;
     width: 100%; /* Full width of the grid cell */
@@ -81,19 +78,23 @@
     background-color: #45a049;
 }
 
-@media (max-width: 600px) {
-    #shop-container {
-        grid-template-columns: repeat(2, 1fr); /* 2 columns on small screens */
-    }
+.border-chest {
+    border: 3px solid grey; /* Grey border for Chest */
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
-@media (max-width: 400px) {
-    #shop-container {
-        grid-template-columns: 1fr; /* 1 column on very small screens */
-    }
+.border-rare-chest {
+    border: 3px solid gold; /* Gold border for Rare Chest */
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
 
-    .item-image {
-        width: 50px; /* Further reduce image size for very small screens */
-        height: 50px; /* Further reduce image size for very small screens */
-    }
+.border-epic-chest {
+    border: 3px solid purple; /* Gold border for Rare Chest */
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
