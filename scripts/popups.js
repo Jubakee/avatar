@@ -6,7 +6,7 @@ function showNotification(message) {
         notification.classList.add('show');
         setTimeout(() => {
             notification.classList.remove('show');
-        }, 5000); // Hide the notification after 5 seconds
+        }, 3000); // Hide the notification after 5 seconds
     }
 }
 //#endregion

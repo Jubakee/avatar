@@ -3,7 +3,7 @@ function resetGame() {
     coins = 0;
     energy = 1000; // Reset energy to starting value
     level = 1; // Reset level to starting value
-    coinsPerClick = 100; // Reset coins per click
+    coinsPerClick = 1; // Reset coins per click
 
     // Clear saved data from local storage
     localStorage.removeItem('avatar_coins');

@@ -1,7 +1,6 @@
 #shop-container {
     padding: 20px;
-    background-color: #f8f8f8;
-    margin-top: 30px;
+    margin-top: 20px;
     display: grid;
     grid-template-columns: repeat(3, 1fr); /* 3 columns */
     gap: 20px; /* Space between items */
@@ -15,7 +14,7 @@
     grid-column: span 3; /* Make the title span all 3 columns */
     text-align: center;
     font-size: 2em; /* Adjust as needed */
-    margin-bottom: 15px; /* Space between title and grid */
+    margin-bottom: 0px; /* Space between title and grid */
 }
 
 .shop-item {
@@ -37,7 +36,6 @@
 .item-name {
     display: block;
     font-size: 1.2em;
-    margin-bottom: 10px;
     font-weight: bold;
 }
 

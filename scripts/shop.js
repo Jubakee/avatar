@@ -79,10 +79,11 @@ function handleBuyButtonClick(event) {
                 console.log(inventory)
 
                 // Optionally, add a feedback message to the user
-                alert('Item purchased!');
+                showNotification("Item Purchased!");
+                
             } else {
                 // Inform the user they don't have enough coins
-                alert('Not enough coins to purchase this item.');
+                showNotification('Not enough coins to purchase this item!');
             }
         }
     }
