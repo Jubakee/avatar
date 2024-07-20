@@ -1,8 +1,5 @@
-
-// Call renderInventory to display the items when the page loads
 document.addEventListener('DOMContentLoaded', renderInventory);
 
-// Function to load the player's inventory from localStorage
 function loadInventory() {
     let inventory = localStorage.getItem('avatar_inventory');
     if (inventory) {
@@ -14,7 +11,6 @@ function loadInventory() {
 
 function renderInventory() {
     const inventory = loadInventory();
-
     const inventoryList = document.getElementById('inventory-list');
     inventoryList.innerHTML = ''; // Clear existing content
 
@@ -28,28 +24,28 @@ function renderInventory() {
         listItem.classList.add('inventory-item');
 
         // Determine the border class based on the item type
-let borderClass;
-switch (item.type) {
-    case 'Normal':
-        borderClass = 'border-chest'; // Class for normal chest
-        break;
-    case 'Rare':
-        borderClass = 'border-rare-chest'; // Class for rare chest
-        break;
-    case 'Epic':
-        borderClass = 'border-epic-chest'; // Class for epic chest
-        break;
-    default:
-        borderClass = ''; // No border class if type is not recognized
-}
+        let borderClass;
+        switch (item.type) {
+            case 'Normal':
+                borderClass = 'border-chest'; // Class for normal chest
+                break;
+            case 'Rare':
+                borderClass = 'border-rare-chest'; // Class for rare chest
+                break;
+            case 'Epic':
+                borderClass = 'border-epic-chest'; // Class for epic chest
+                break;
+            default:
+                borderClass = ''; // No border class if type is not recognized
+        }
 
-listItem.innerHTML = `
-    <div class="inventory-item-details ${borderClass}">
-        <span class="item-name">${item.name}</span>
-        <span class="item-description">${item.description}</span>
-        <img src="${item.image}" alt="${item.name}" class="item-image">
-    </div>
-`;
+        listItem.innerHTML = `
+            <div class="inventory-item-details ${borderClass}">
+                <span class="item-name">${item.name}</span>
+                <span class="item-description">${item.description}</span>
+                <img src="${item.image}" alt="${item.name}" class="item-image">
+            </div>
+        `;
 
         inventoryList.appendChild(listItem);
     });
@@ -57,10 +53,7 @@ listItem.innerHTML = `
     handlePagination(); // Call pagination function if needed
 }
 
-
-// Function to handle pagination (if needed)
 function handlePagination() {
-    // Example: implement pagination logic here
     const inventoryList = document.getElementById('inventory-list');
     const itemsPerPage = 9;
     const items = inventoryList.getElementsByClassName('inventory-item');
@@ -98,4 +91,3 @@ function handlePagination() {
     // Show the first page by default
     showPage(1);
 }
-

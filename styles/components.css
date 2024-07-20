@@ -68,9 +68,13 @@
     padding: 0;
 }
 
+#clickable-coin img {
+    transition: transform 0.3s ease; /* Smooth transition for scaling */
+    transform: scale(1); /* Default scale */
+}
+
 #clickable-coin img.clicked {
-    transform: scale(1.1); /* Scale up effect */
-    transition: transform 0.3s ease; /* Smooth transition */
+    transform: scale(1.1); /* Scale up effect when clicked */
 }
 
 .feedback {

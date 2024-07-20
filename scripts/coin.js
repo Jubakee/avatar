@@ -1,4 +1,3 @@
-//#region Coin
 document.getElementById("clickable-coin").addEventListener("touchstart", function(event) {
     event.preventDefault();
     coinClicked(event);
@@ -24,7 +23,6 @@ function formatNumber(number) {
     }
 }
 
-
 function coinClicked(event) {
     event.preventDefault();
     const touches = event.touches || [{ clientX: event.clientX, clientY: event.clientY }];
@@ -45,7 +43,6 @@ function updateGameState(touchCount) {
     console.log(coinsPerClick)
     energy = Math.max(0, energy - touchCount);
 
-    
     document.getElementById('coins').innerText = formatNumber(coins);
     saveCoins();
     saveEnergy();
@@ -56,9 +53,10 @@ function updateGameState(touchCount) {
 function animateCoin() {
     const coinImage = document.querySelector('#clickable-coin img');
     if (coinImage) {
-        coinImage.classList.remove('clicked');
-        void coinImage.offsetWidth; // Trigger reflow for CSS animation
         coinImage.classList.add('clicked');
+        setTimeout(() => {
+            coinImage.classList.remove('clicked');
+        }, 300); // Duration should match the transition duration in CSS
     }
 }
 
@@ -99,4 +97,3 @@ function createFeedback(x, y, amount) {
         }, { once: true });
     }, 600); // Match the duration of the animation
 }
-//#endregion
