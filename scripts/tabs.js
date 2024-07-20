@@ -25,6 +25,7 @@ function showTab(tabId) {
 
 
     document.getElementById('coins').innerText = formatNumber(coins);
+  renderInventory();
     
 }
 

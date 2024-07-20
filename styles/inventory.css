@@ -1,0 +1,89 @@
+#inventory-container {
+    padding: 20px;
+    margin-top: 20px;
+    display: flex; /* Use flexbox for centering */
+    flex-direction: column;
+    align-items: center; /* Center items horizontally */
+    justify-content: center; /* Center items vertically */
+    overflow-y: auto;
+}
+
+#inventory-title {
+    text-align: center;
+    font-size: 2em; /* Adjust as needed */
+    margin-bottom: 20px; /* Space between title and grid */
+}
+
+#inventory-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns */
+    gap: 20px; /* Space between items */
+    justify-items: center; /* Center items horizontally within grid cell */
+    width: 100%; /* Full width to respect the container's alignment */
+    max-width: 1200px; /* Set a max-width for better alignment and layout */
+}
+
+.inventory-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    box-sizing: border-box;
+    width: 100%; /* Full width of the grid cell */
+    max-width: 180px; /* Prevent items from becoming too wide */
+}
+
+.inventory-item-details {
+    text-align: center;
+    width: 100%; /* Full width of the inventory-item */
+}
+
+.item-name {
+    display: block;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.item-image {
+    width: 60px; /* Adjusted width for smaller screens */
+    height: 60px; /* Adjusted height for smaller screens */
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.item-description {
+    display: block;
+    font-size: 0.9em;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.item-price {
+    display: block;
+    font-size: 1.2em;
+    color: #333;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.border-chest {
+    border: 3px solid grey; /* Grey border for Normal Chest */
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.border-rare-chest {
+    border: 3px solid gold; /* Gold border for Rare Chest */
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.border-epic-chest {
+    border: 3px solid purple; /* Purple border for Epic Chest */
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}

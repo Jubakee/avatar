@@ -53,7 +53,7 @@ function handleBuyButtonClick(event) {
             const priceText = shopItem.querySelector('.item-price').textContent;
             const type = shopItem.querySelector('.item-type').textContent;
             const price = parseInt(priceText.replace('💵 ', ''), 10); // Extract the numeric price
-
+            const imageSrc = shopItem.querySelector('.item-image').getAttribute('src');
             // Check if the player has enough coins
             const playerCoins = getPlayerCoins();
             if (playerCoins >= price) {
@@ -67,6 +67,7 @@ function handleBuyButtonClick(event) {
                 const itemDetails = {
                     id: uniqueId, // Unique sequential ID
                     name: name,
+                    image: imageSrc, 
                     description: description,
                     type: type, // Set type based on your item logic
                 };
@@ -80,6 +81,7 @@ function handleBuyButtonClick(event) {
 
                 // Optionally, add a feedback message to the user
                 showNotification("Item Purchased!");
+
                 
             } else {
                 // Inform the user they don't have enough coins
