@@ -27,6 +27,7 @@
     padding: 10px;
     box-sizing: border-box;
     width: 100%; /* Full width of the grid cell */
+    max-width: 180px; /* Prevent items from becoming too wide */
 }
 
 .shop-item-details {
@@ -41,8 +42,8 @@
 }
 
 .item-image {
-    width: 80px;
-    height: 80px;
+    width: 60px; /* Adjusted width for smaller screens */
+    height: 60px; /* Adjusted height for smaller screens */
     object-fit: cover;
     margin-bottom: 10px;
 }
@@ -84,5 +85,10 @@
 @media (max-width: 400px) {
     #shop-container {
         grid-template-columns: 1fr; /* 1 column on very small screens */
+    }
+
+    .item-image {
+        width: 50px; /* Further reduce image size for very small screens */
+        height: 50px; /* Further reduce image size for very small screens */
     }
 }
