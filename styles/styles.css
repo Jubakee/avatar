@@ -10,8 +10,6 @@ body {
     align-items: center;
     justify-content: center;
     text-align: center;
-    touch-action: none; /* Disable swipe gestures */
-    overflow: hidden; /* Combined overflow-x and overflow-y */
 }
 
 main {
@@ -21,13 +19,11 @@ main {
     justify-content: flex-start;
     align-items: center;
     touch-action: none; /* Disable swipe gestures */
-    overflow: hidden; /* Combined overflow-x and overflow-y */
 }
 
 main.active {
     display: flex; /* Only display the active tab */
     touch-action: none; /* Disable swipe gestures */
-    overflow: hidden; /* Combined overflow-x and overflow-y */
 }
 
 #energy-bar-container {
