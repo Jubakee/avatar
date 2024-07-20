@@ -9,7 +9,7 @@ function resetGame() {
     localStorage.removeItem('avatar_coins');
     localStorage.removeItem('avatar_energy');
     localStorage.removeItem('avatar_lastupdate');
-
+    localStorage.removeItem('avatar_base_income');
     // Update the UI
     document.getElementById('coins').innerText = coins;
     updateEnergyBar();

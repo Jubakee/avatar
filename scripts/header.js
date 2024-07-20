@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const incomeElement = document.getElementById('income');
     const timeUnitSelect = document.getElementById('time-unit');
 
-    let baseIncomePerSec = 1; // Your base income per second
+    let baseIncomePerSec = 1; // Default base income per second
     let incomeInterval;
 
     const timeUnits = {
@@ -15,16 +15,37 @@ document.addEventListener('DOMContentLoaded', function() {
         year: 31536000 // approx 365 days
     };
 
+    function loadIncome() {
+        const savedIncome = localStorage.getItem('avatar_base_income');
+        if (savedIncome !== null) {
+            baseIncomePerSec = parseInt(savedIncome, 10);
+        }
+    }
+
+    function formatNumber(number) {
+        if (number >= 1e12) {
+            return (number / 1e12).toFixed(2) + 'T';
+        } else if (number >= 1e9) {
+            return (number / 1e9).toFixed(2) + 'B';
+        } else if (number >= 1e6) {
+            return (number / 1e6).toFixed(2) + 'M';
+        } else if (number >= 1e5) {
+            return (number / 1e3).toFixed(0) + 'K';
+        } else {
+            return number.toLocaleString();
+        }
+    }
+
     function updateIncomeDisplay() {
         const selectedUnit = timeUnitSelect.value;
         const multiplier = timeUnits[selectedUnit];
         const adjustedIncome = baseIncomePerSec * multiplier;
-        incomeElement.textContent = `${adjustedIncome.toLocaleString()} p/${selectedUnit}`;
+        incomeElement.textContent = `${formatNumber(adjustedIncome)} p/${selectedUnit}`;
     }
 
     function updateCoins() {
         coins += baseIncomePerSec;
-        document.getElementById('coins').innerText = coins;
+        document.getElementById('coins').innerText = formatNumber(coins);
         saveCoins();
     }
 
@@ -34,10 +55,12 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     timeUnitSelect.addEventListener('change', function() {
-        baseIncomePerSec = timeUnits[timeUnitSelect.value];
         updateIncomeDisplay();
-        startIncomeInterval();
     });
+
+    // Load saved income and coins
+    loadIncome();
+    loadCoins();
 
     // Initialize the display and start the income interval
     updateIncomeDisplay();
