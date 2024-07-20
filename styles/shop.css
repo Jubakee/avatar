@@ -2,21 +2,35 @@
     padding: 20px;
     background-color: #f8f8f8;
     margin-top: 100px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns */
+    gap: 15px; /* Space between items */
+    justify-content: center;
+}
+
+#shop-title {
+    grid-column: span 3; /* Make the title span all 3 columns */
+    text-align: center;
+    font-size: 2em; /* Adjust as needed */
+    margin-bottom: 15px; /* Space between title and grid */
 }
 
 .shop-item {
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    margin-bottom: 15px;
-}
-
-.shop-item-details {
-    text-align: center;
+    align-items: center;
     background-color: #fff;
     border: 1px solid #ddd;
     border-radius: 8px;
     padding: 10px;
-    width: 200px;
+    box-sizing: border-box;
+    width: 100%; /* Full width of the grid cell */
+}
+
+.shop-item-details {
+    text-align: center;
+    width: 100%; /* Full width of the shop-item */
 }
 
 .item-name {
@@ -58,4 +72,16 @@
 
 .buy-button:hover {
     background-color: #45a049;
+}
+
+@media (max-width: 600px) {
+    #shop-container {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns on small screens */
+    }
+}
+
+@media (max-width: 400px) {
+    #shop-container {
+        grid-template-columns: 1fr; /* 1 column on very small screens */
+    }
 }
