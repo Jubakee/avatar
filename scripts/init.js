@@ -12,3 +12,4 @@ window.addEventListener('load', () => {
     setInterval(rechargeEnergy, rechargeInterval);
     setupTabEventListeners();
 });
+

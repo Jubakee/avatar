@@ -18,11 +18,11 @@ main {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    touch-action: none; /* Disable swipe gestures */
 }
 
 main.active {
     display: flex; /* Only display the active tab */
+    overflow: hidden;
     touch-action: none; /* Disable swipe gestures */
 }
 
@@ -41,7 +41,6 @@ main.active {
     background-color: red;
     height: 24px;
     overflow: hidden; /* Ensure the inner fill respects the border radius */
-    border-radius: 12px; /* Optional rounded corners */
 }
 
 #energy-fill {
