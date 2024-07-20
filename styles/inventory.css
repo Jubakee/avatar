@@ -6,6 +6,7 @@
     align-items: center; /* Center items horizontally */
     justify-content: center; /* Center items vertically */
     overflow-y: auto;
+    max-width: 80vw; /* Max width of 80% of the viewport width */
 }
 
 #inventory-title {
@@ -86,4 +87,23 @@
     padding: 10px;
     border-radius: 5px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    #inventory-list {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns for tablets */
+    }
+    .inventory-item {
+        max-width: 150px; /* Adjust max width for smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    #inventory-list {
+        grid-template-columns: 1fr; /* 1 column for phones */
+    }
+    .inventory-item {
+        max-width: 100%; /* Full width for smaller screens */
+    }
 }
