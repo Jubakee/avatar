@@ -12,12 +12,29 @@
     <div id="header">
         <div id="level-container">
             <span id="level-icon">🏆</span>
-            <span id="level-value">Lvl: 1</span>
+            <span id="level-value">Lvl 1</span>
         </div>
+
+
+        <div id="income-container">
+            <span id="income-icon">💵</span>
+            <span id="income" class="income-value">0 p/sec</span>
+            <select id="time-unit">
+                <option value="sec">sec</option>
+                <option value="min">min</option>
+                <option value="hour">hour</option>
+                <option value="day">day</option>
+                <option value="week">week</option>
+                <option value="month">month</option>
+                <option value="year">year</option>
+            </select>
+        </div>
+
         <div id="coins-container">
             <span id="coins-icon">💵</span>
             <span id="coins" class="coins-value">0</span>
         </div>
+
     </div>
 
     <main id="tab1" class="active"> 
@@ -86,6 +103,7 @@
     <script src="scripts/coin.js"></script>
     <script src="scripts/config.js"></script>   
     <script src="scripts/energy.js"></script> 
+    <script src="scripts/header.js"></script> 
     <script src="scripts/init.js"></script> 
     <script src="scripts/levels.js"></script> 
     <script src="scripts/popups.js"></script> 

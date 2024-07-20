@@ -39,7 +39,7 @@ main.active {
 #energy-bar {
     width: 100%;
     background-color: red;
-    height: 24px;
+    height: 36px;
     overflow: hidden; /* Ensure the inner fill respects the border radius */
 }
 
@@ -50,7 +50,7 @@ main.active {
 }
 
 #energy-value-container {
-    margin-top: 8px;
+    margin-top: 10px;
     font-weight: bold;
 }
 
@@ -78,7 +78,7 @@ main.active {
 }
 
 #coins-icon, #level-icon {
-    margin-right: 8px;
+    margin-right: 10px;
 }
 
 .coins-value {
@@ -87,6 +87,21 @@ main.active {
 
 #level-value {
     font-weight: bold;
+}
+
+#income-container {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+}
+#income-icon {
+    margin-right: 10px;
+}
+.income-value {
+    margin-right: 10px;
+}
+select {
+    margin-left: 10px;
 }
 
 #image-container {
@@ -120,7 +135,7 @@ main.active {
 
 .feedback.show {
     opacity: 1; /* Make it visible */
-    transform: translateY(-100px); /* Move up */
+    transform: translateY(-110px); /* Move up */
     /* color: green;
     text-shadow: 0 0 15px rgba(0, 255, 0, 0.8); Glowing effect */
 }
@@ -145,7 +160,6 @@ footer {
     text-align: center;
     padding: 10px;
     margin: 0 10px;
-    border-radius: 10px;
     transition: background-color 0.3s, color 0.3s;
 }
 
@@ -161,7 +175,6 @@ footer {
 
 .active-tab {
     background-color: black;
-    border-radius: 5px;
     color: white;
 }
 
@@ -174,7 +187,7 @@ footer {
     color: white;
     padding: 10px 20px;
     border-radius: 5px;
-    font-size: 16px;
+    font-size: 18px;
     z-index: 1000;
     display: none; /* Hidden by default */
 }
