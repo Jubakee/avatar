@@ -1,53 +1,45 @@
-
-/* Center the inventory container */
+/* Center the inventory container and use flexbox for alignment */
 #inventory-container {
-    padding: 20px;
-    margin: 0 auto; /* Center horizontally */
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 80vw; /* 80% of viewport width */
-    max-width: 1200px; /* Prevent it from becoming too wide */
-    box-sizing: border-box;
-    margin-right: 50px;
+    align-items: center; /* Center items horizontally */
+    padding: 20px;
     margin-top: 20px;
-    overflow-y: auto;
+    max-width: 80vw; /* Limit the container width to 80% of the viewport width */
+    margin-bottom: 100px;
+    box-sizing: border-box;
 }
 
+/* Title styles */
 #inventory-title {
     text-align: center;
-    font-size: 2em;
-    margin-bottom: 20px;
+    font-size: 2em; /* Adjust as needed */
+    margin-bottom: 20px; /* Space between title and grid */
 }
 
+/* Inventory list styling */
 #inventory-list {
     display: grid;
     grid-template-columns: repeat(3, 1fr); /* 3 columns */
-    gap: 15px; /* Space between items */
+    gap: 20px; /* Space between items */
     width: 100%;
+    max-width: 1200px; /* Maximum width for larger screens */
     box-sizing: border-box;
 }
 
+/* Inventory item styling */
 .inventory-item {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 15px;
+    padding: 10px;
     box-sizing: border-box;
-    width: 100%; /* Full width of grid cell */
-    max-width: 150px; /* Max width for better fit */
-    border-radius: 8px; /* Rounded corners */
-    background-color: #fff; /* Background color */
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+    width: 100%; /* Full width of the grid cell */
+    max-width: 180px; /* Prevent items from becoming too wide */
 }
 
-.inventory-item:hover {
-    transform: scale(1.05); /* Slight zoom on hover */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Deeper shadow */
-}
-
+/* Inventory item details */
 .inventory-item-details {
     text-align: center;
     width: 100%;
@@ -55,33 +47,33 @@
 
 .item-name {
     display: block;
-    font-size: 1.1em;
+    font-size: 1.2em;
     font-weight: bold;
-    margin-bottom: 5px;
 }
 
 .item-image {
-    width: 60px; /* Size of item image */
-    height: 60px;
+    width: 60px; /* Adjusted width for smaller screens */
+    height: 60px; /* Adjusted height for smaller screens */
     object-fit: cover;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
 }
 
 .item-description {
     display: block;
     font-size: 0.9em;
     color: #666;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
 }
 
 .item-price {
     display: block;
-    font-size: 1.1em;
+    font-size: 1.2em;
     color: #333;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
     font-weight: bold;
 }
 
+/* Border styles for items */
 .border-chest {
     border: 2px solid grey; /* Grey border for normal chests */
     padding: 10px;
@@ -97,11 +89,14 @@
     padding: 10px;
 }
 
+/* Pagination controls styling */
 #pagination-controls {
     margin-top: 20px;
     text-align: center;
+    width: 100%; /* Full width for pagination controls */
 }
 
+/* Pagination button styling */
 #pagination-controls button {
     margin: 0 5px; /* Space between buttons */
     padding: 10px 20px;
