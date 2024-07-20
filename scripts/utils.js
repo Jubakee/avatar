@@ -3,8 +3,10 @@ function loadCoins() {
     const savedCoins = localStorage.getItem('avatar_coins');
     if (savedCoins !== null) {
         coins = parseInt(savedCoins, 10);
+        
         document.getElementById('coins').innerText = coins;
     }
+
 }
 
 function loadEnergy() {

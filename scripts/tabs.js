@@ -23,6 +23,8 @@ function showTab(tabId) {
     });
     document.getElementById(tabId + '-btn').classList.add('active-tab');
 
+    updateIncomeDisplay();
     document.getElementById('coins').innerText = coins;
+    
 }
 //#endregion

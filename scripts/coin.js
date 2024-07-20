@@ -10,6 +10,21 @@ document.getElementById("clickable-coin").addEventListener("click", function(eve
     if (navigator.vibrate) navigator.vibrate(100); // Vibrate on click
 });
 
+function formatNumber(number) {
+    if (number >= 1e12) {
+        return (number / 1e12).toFixed(2) + 'T';
+    } else if (number >= 1e9) {
+        return (number / 1e9).toFixed(2) + 'B';
+    } else if (number >= 1e6) {
+        return (number / 1e6).toFixed(2) + 'M';
+    } else if (number >= 1e5) {
+        return (number / 1e3).toFixed(0) + 'K';
+    } else {
+        return number.toLocaleString();
+    }
+}
+
+
 function coinClicked(event) {
     event.preventDefault();
     const touches = event.touches || [{ clientX: event.clientX, clientY: event.clientY }];
@@ -27,8 +42,11 @@ function coinClicked(event) {
 
 function updateGameState(touchCount) {
     coins += touchCount * coinsPerClick;
+    console.log(coinsPerClick)
     energy = Math.max(0, energy - touchCount);
-    document.getElementById('coins').innerText = coins;
+
+    
+    document.getElementById('coins').innerText = formatNumber(coins);
     saveCoins();
     saveEnergy();
     updateEnergyBar();
