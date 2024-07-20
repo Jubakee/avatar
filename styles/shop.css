@@ -1,12 +1,15 @@
 #shop-container {
     padding: 20px;
     background-color: #f8f8f8;
-    margin-top: 20px;
+    margin-top: 50px;
     display: grid;
     grid-template-columns: repeat(3, 1fr); /* 3 columns */
-    gap: 15px; /* Space between items */
+    gap: 10px; /* Space between items */
     justify-content: center;
+    margin-bottom: 100px;
     overflow-y: auto;
+    touch-action: none; /* Prevent default touch actions */
+
 }
 
 #shop-title {
