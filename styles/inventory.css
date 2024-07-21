@@ -7,6 +7,7 @@
     justify-content: center;
     margin-bottom: 100px;
     overflow-y: hidden;
+    width: 100%;
 }
 
 #inventory-title {
@@ -21,6 +22,7 @@
     list-style: none;
     padding: 0;
     margin: 0;
+
 }
 
 .inventory-item {
@@ -35,7 +37,6 @@
 #pagination-controls {
     grid-column: span 3; /* Make the title span all 3 columns */
     text-align: center;
-    margin-top: 20px;
 }
 
 #pagination-controls button {
