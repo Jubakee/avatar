@@ -59,7 +59,7 @@ function renderInventory() {
 
 function handlePagination() {
     const inventoryList = document.getElementById('inventory-list');
-    const itemsPerPage = 15;
+    const itemsPerPage = 6;
     const items = inventoryList.getElementsByClassName('inventory-item');
     const totalItems = items.length;
     const totalPages = Math.ceil(totalItems / itemsPerPage);
