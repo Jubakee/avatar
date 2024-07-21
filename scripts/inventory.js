@@ -25,14 +25,24 @@ function renderInventory() {
         let borderClass;
         switch (item.type) {
             case 'Normal':
-                borderClass = 'border-chest'; // Class for normal chest
+                borderClass = 'border-normal-chest'; // Class for normal chest
+                break;
+            case 'Magic':
+                borderClass = 'border-magic-chest'; // Class for rare chest
                 break;
             case 'Rare':
-                borderClass = 'border-rare-chest'; // Class for rare chest
+                borderClass = 'border-rare-chest'; // Class for epic chest
                 break;
             case 'Epic':
-                borderClass = 'border-epic-chest'; // Class for epic chest
+                borderClass = 'border-epic-chest'; // Class for normal chest
+                 break;
+            case 'Unique':
+                borderClass = 'border-unique-chest'; // Class for rare chest
                 break;
+            case 'Legendary':
+                borderClass = 'border-legendary-chest'; // Class for epic chest
+                break;
+                    
             default:
                 borderClass = ''; // No border class if type is not recognized
         }

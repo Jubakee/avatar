@@ -9,7 +9,7 @@ let lastUpdateTime = Date.now(); // Track last update time
 const feedbackQueue = [];
 
 let level = 1; // Starting level
-const levelUpThreshold = 100000; // Coins needed to level up
+const levelUpThreshold = 1000000000000000000; // Coins needed to level up
 
 
 
