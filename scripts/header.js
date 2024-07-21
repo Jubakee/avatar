@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     const incomeElement = document.getElementById('income');
-    const timeUnitSelect = document.getElementById('time-unit');
+    // const timeUnitSelect = document.getElementById('time-unit');
 
     let baseIncomePerSec = 1; // Default base income per second
     let incomeInterval;
@@ -37,10 +37,10 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function updateIncomeDisplay() {
-        const selectedUnit = timeUnitSelect.value;
-        const multiplier = timeUnits[selectedUnit];
-        const adjustedIncome = baseIncomePerSec * multiplier;
-        incomeElement.textContent = `${formatNumber(adjustedIncome)} p/${selectedUnit}`;
+        // const selectedUnit = timeUnitSelect.value;
+        // const multiplier = timeUnits[selectedUnit];
+        // const adjustedIncome = baseIncomePerSec * multiplier;
+        // incomeElement.textContent = `${formatNumber(adjustedIncome)} p/${selectedUnit}`;
     }
 
     function updateCoins() {
@@ -54,9 +54,9 @@ document.addEventListener('DOMContentLoaded', function() {
         incomeInterval = setInterval(updateCoins, 1000);
     }
 
-    timeUnitSelect.addEventListener('change', function() {
-        updateIncomeDisplay();
-    });
+    // timeUnitSelect.addEventListener('change', function() {
+    //     updateIncomeDisplay();
+    // });
 
     // Load saved income and coins
     loadIncome();
