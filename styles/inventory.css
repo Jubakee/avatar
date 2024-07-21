@@ -2,40 +2,57 @@
     padding: 20px;
     margin-top: 20px;
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 columns */
+    grid-template-columns: repeat(3, 1fr); /* 3 columns layout */
     gap: 20px; /* Space between items */
     justify-content: center;
     margin-bottom: 100px;
-    overflow-y: hidden;
-    width: 100%;
+    overflow-y: auto;
 }
 
 #inventory-title {
     grid-column: span 3; /* Make the title span all 3 columns */
     text-align: center;
     font-size: 2em; /* Adjust as needed */
-    margin-bottom: 0px; /* Space between title and grid */
+    margin-bottom: 20px; /* Space between title and grid */
 }
 
 #inventory-list {
-    grid-column: span 3; /* Make the title span all 3 columns */
+    grid-column: span 3; /* Make the inventory list span all 3 columns */
     list-style: none;
     padding: 0;
     margin: 0;
-
+    display: grid; /* Apply grid layout to the list */
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Responsive grid layout */
+    gap: 20px; /* Space between items */
 }
 
 .inventory-item {
+    display: flex;
+    align-items: center;
     padding: 10px;
-    margin-bottom: 10px;
-    border-bottom: 1px solid #ddd;
+    border: 1px solid #ddd; /* Border for items */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Optional: Shadow for better appearance */
+    background-color: #fff; /* Optional: Background color for better appearance */
+    border-radius: 8px; /* Rounded corners */
 }
 
-.inventory-item:last-child {
+.item-image {
+    width: 24px; /* Set image width */
+    height: 24px; /* Set image height */
+    margin-right: 10px; /* Space between image and text */
+    border-radius: 4px; /* Optional: Rounded corners for image */
+    display: inline-block; /* Ensure it is inline with text */
+    vertical-align: middle; /* Align with text middle */
+}
+
+.item-text {
+    flex: 1; /* Take up remaining space */
+    display: inline-block; /* Ensure it is inline with image */
+    vertical-align: middle; /* Align with image middle */
 }
 
 #pagination-controls {
-    grid-column: span 3; /* Make the title span all 3 columns */
+    grid-column: span 3; /* Make the pagination span all columns */
     text-align: center;
 }
 
@@ -44,19 +61,24 @@
     padding: 5px 10px;
     font-size: 16px;
     cursor: pointer;
+    border: none; /* Remove default border */
+    background-color: #007bff; /* Button background color */
+    color: #fff; /* Button text color */
+    border-radius: 4px; /* Rounded corners */
+}
+
+#pagination-controls button:hover {
+    background-color: #0056b3; /* Darker background on hover */
 }
 
 .border-chest {
-    border: 2px solid grey; /* Grey border for normal chests */
-    padding: 10px;
+    border-color: #cccccc; /* Light gray border for normal chest */
 }
 
 .border-rare-chest {
-    border: 2px solid gold; /* Gold border for rare chests */
-    padding: 10px;
+    border-color: #ffcc00; /* Gold border for rare chest */
 }
 
 .border-epic-chest {
-    border: 2px solid purple; /* Purple border for epic chests */
-    padding: 10px;
+    border-color: #cc00ff; /* Purple border for epic chest */
 }

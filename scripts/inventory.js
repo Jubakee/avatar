@@ -8,7 +8,6 @@ function loadInventory() {
         return []; // Return an empty array if no inventory exists
     }
 }
-
 function renderInventory() {
     const inventory = loadInventory();
     const inventoryList = document.getElementById('inventory-list');
@@ -39,16 +38,28 @@ function renderInventory() {
         }
 
         listItem.classList.add(borderClass); // Add the border class
-        listItem.textContent = `${item.name}: ${item.description}`; // Text-only display
+
+        const itemImage = document.createElement('img');
+        itemImage.src = item.image;
+        itemImage.alt = item.name;
+        itemImage.classList.add('item-image');
+
+        const itemText = document.createElement('span');
+        itemText.textContent = `${item.description}`; //${item.name}: 
+        itemText.classList.add('item-text');
+
+        listItem.appendChild(itemImage);
+        listItem.appendChild(itemText);
         inventoryList.appendChild(listItem);
     });
 
     handlePagination(); // Call pagination function if needed
 }
 
+
 function handlePagination() {
     const inventoryList = document.getElementById('inventory-list');
-    const itemsPerPage = 8;
+    const itemsPerPage = 15;
     const items = inventoryList.getElementsByClassName('inventory-item');
     const totalItems = items.length;
     const totalPages = Math.ceil(totalItems / itemsPerPage);
