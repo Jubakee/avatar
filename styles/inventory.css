@@ -3,7 +3,7 @@
     padding: 20px;
     margin-top: 20px;
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 columns layout */
+    grid-template-columns: repeat(3, 1fr); /* 3 columns */
     gap: 20px; /* Space between items */
     justify-content: center;
     margin-bottom: 100px;
@@ -15,46 +15,48 @@
     grid-column: span 3; /* Make the title span all 3 columns */
     text-align: center;
     font-size: 2em; /* Adjust as needed */
+    margin-bottom: 0px; /* Space between title and grid */
 }
 
 /* Inventory list styling */
 #inventory-list {
     grid-column: span 3; /* Make the inventory list span all 3 columns */
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: grid; /* Apply grid layout to the list */
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive grid layout */
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns */
     gap: 20px; /* Space between items */
-    width: 100%; /* Ensure the list takes full width of the container */
+    justify-content: center;
+    margin-bottom: 100px;
+    overflow-y: auto;
 }
 
 /* Inventory item styling */
 .inventory-item {
     display: flex;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
     padding: 10px;
     box-sizing: border-box;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin: 0; /* Remove bottom margin to align items in rows */
-    background-color: #fff; /* Ensure a background color */
+    width: 100%; /* Full width of the grid cell */
+    width: 140px; /* Prevent items from becoming too wide */
 }
 
 /* Image styling */
 .item-image {
-    width: 60px; /* Adjust as needed */
-    height: 60px; /* Adjust as needed */
+    width: 60px; /* Adjusted width for smaller screens */
+    height: 60px; /* Adjusted height for smaller screens */
     object-fit: cover;
-    margin-right: 10px; /* Space between image and text */
+    margin-bottom: 10px;
 }
 
 /* Text styling */
 .item-text {
-    flex: 1; /* Takes up remaining space */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    text-align: center;
+    display: block;
+    font-size: 0.9em;
+    color: #666;
+    margin-bottom: 10px;
 }
 
 /* Button container styling */
@@ -93,7 +95,6 @@
     color: #fff; /* Button text color */
     border-radius: 4px; /* Rounded corners */
 }
-
 
 /* Border styles for different types */
 .border-normal-chest {

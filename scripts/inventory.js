@@ -77,9 +77,10 @@ function renderInventory() {
         }
 
         // Append elements to listItem
-        listItem.appendChild(itemImage);
+
         listItem.appendChild(itemName);
         listItem.appendChild(itemText);
+        listItem.appendChild(itemImage);
   
         listItem.appendChild(buttonContainer); // Append button container
         inventoryList.appendChild(listItem);

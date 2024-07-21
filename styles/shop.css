@@ -24,7 +24,7 @@
     padding: 10px;
     box-sizing: border-box;
     width: 100%; /* Full width of the grid cell */
-    max-width: 180px; /* Prevent items from becoming too wide */
+    width: 140px; /* Prevent items from becoming too wide */
 }
 
 .shop-item-details {
