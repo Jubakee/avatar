@@ -1,3 +1,4 @@
+/* Container for the inventory grid layout */
 #inventory-container {
     padding: 20px;
     margin-top: 20px;
@@ -9,48 +10,74 @@
     overflow-y: auto;
 }
 
+/* Title spanning all columns */
 #inventory-title {
     grid-column: span 3; /* Make the title span all 3 columns */
     text-align: center;
     font-size: 2em; /* Adjust as needed */
-    margin-bottom: 20px; /* Space between title and grid */
 }
 
+/* Inventory list styling */
 #inventory-list {
     grid-column: span 3; /* Make the inventory list span all 3 columns */
     list-style: none;
     padding: 0;
     margin: 0;
     display: grid; /* Apply grid layout to the list */
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Responsive grid layout */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive grid layout */
     gap: 20px; /* Space between items */
+    width: 100%; /* Ensure the list takes full width of the container */
 }
 
+/* Inventory item styling */
 .inventory-item {
     display: flex;
     align-items: center;
     padding: 10px;
-    border: 1px solid #ddd; /* Border for items */
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Optional: Shadow for better appearance */
-    background-color: #fff; /* Optional: Background color for better appearance */
-    border-radius: 8px; /* Rounded corners */
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 0; /* Remove bottom margin to align items in rows */
+    background-color: #fff; /* Ensure a background color */
 }
 
+/* Image styling */
 .item-image {
-    width: 24px; /* Set image width */
-    height: 24px; /* Set image height */
+    width: 60px; /* Adjust as needed */
+    height: 60px; /* Adjust as needed */
+    object-fit: cover;
     margin-right: 10px; /* Space between image and text */
-    border-radius: 4px; /* Optional: Rounded corners for image */
-    display: inline-block; /* Ensure it is inline with text */
-    vertical-align: middle; /* Align with text middle */
 }
 
+/* Text styling */
 .item-text {
-    flex: 1; /* Take up remaining space */
-    display: inline-block; /* Ensure it is inline with image */
-    vertical-align: middle; /* Align with image middle */
+    flex: 1; /* Takes up remaining space */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
+/* Button container styling */
+.button-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Open button styling */
+.open-button {
+    margin-top: 10px;
+    background-color: #333333;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 1em;
+    width: 100%;
+}
+
+/* Pagination controls styling */
 #pagination-controls {
     grid-column: span 3; /* Make the pagination span all columns */
     text-align: center;
@@ -62,23 +89,51 @@
     font-size: 16px;
     cursor: pointer;
     border: none; /* Remove default border */
-    background-color: #007bff; /* Button background color */
+    background-color: #333333; /* Button background color */
     color: #fff; /* Button text color */
     border-radius: 4px; /* Rounded corners */
 }
 
-#pagination-controls button:hover {
-    background-color: #0056b3; /* Darker background on hover */
+
+/* Border styles for different types */
+.border-normal-chest {
+    border: 3px solid grey; /* Grey */
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
-.border-chest {
-    border-color: #cccccc; /* Light gray border for normal chest */
+.border-magic-chest {
+    border: 3px solid #1E90FF; /* Dodger Blue */
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
 .border-rare-chest {
-    border-color: #ffcc00; /* Gold border for rare chest */
+    border: 3px solid #FFD700; /* Gold */
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
 .border-epic-chest {
-    border-color: #cc00ff; /* Purple border for epic chest */
+    border: 3px solid #8A2BE2; /* Blue Violet */
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.border-unique-chest {
+    border: 3px solid #32CD32; /* Lime Green */
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.border-legendary-chest {
+    border: 3px solid #FF4500; /* Orange Red */
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }

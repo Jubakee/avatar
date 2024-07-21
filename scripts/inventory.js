@@ -28,24 +28,24 @@ function renderInventory() {
                 borderClass = 'border-normal-chest'; // Class for normal chest
                 break;
             case 'Magic':
-                borderClass = 'border-magic-chest'; // Class for rare chest
+                borderClass = 'border-magic-chest'; // Class for magic chest
                 break;
             case 'Rare':
-                borderClass = 'border-rare-chest'; // Class for epic chest
+                borderClass = 'border-rare-chest'; // Class for rare chest
                 break;
             case 'Epic':
-                borderClass = 'border-epic-chest'; // Class for normal chest
-                 break;
+                borderClass = 'border-epic-chest'; // Class for epic chest
+                break;
             case 'Unique':
-                borderClass = 'border-unique-chest'; // Class for rare chest
+                borderClass = 'border-unique-chest'; // Class for unique chest
                 break;
             case 'Legendary':
-                borderClass = 'border-legendary-chest'; // Class for epic chest
+                borderClass = 'border-legendary-chest'; // Class for legendary chest
                 break;
-                    
             default:
                 borderClass = ''; // No border class if type is not recognized
         }
+
 
         listItem.classList.add(borderClass); // Add the border class
 
@@ -54,12 +54,34 @@ function renderInventory() {
         itemImage.alt = item.name;
         itemImage.classList.add('item-image');
 
+        const itemName = document.createElement('span');
+        itemName.textContent = `${item.name}`; //${item.name}: 
+        itemName.classList.add('item-name')
+
         const itemText = document.createElement('span');
         itemText.textContent = `${item.description}`; //${item.name}: 
         itemText.classList.add('item-text');
 
+        const buttonContainer = document.createElement('div');
+        buttonContainer.classList.add('button-container');
+
+        if (item.name === 'Chest') {
+            const openButton = document.createElement('button');
+            openButton.textContent = 'Open';
+            openButton.classList.add('open-button');
+            openButton.addEventListener('click', () => {
+                // Handle the button click event
+                alert(`Opening ${item.name}`);
+            });
+            buttonContainer.appendChild(openButton);
+        }
+
+        // Append elements to listItem
         listItem.appendChild(itemImage);
+        listItem.appendChild(itemName);
         listItem.appendChild(itemText);
+  
+        listItem.appendChild(buttonContainer); // Append button container
         inventoryList.appendChild(listItem);
     });
 
