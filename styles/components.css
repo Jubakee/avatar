@@ -11,7 +11,7 @@
 #energy-bar {
     width: 100%;
     background-color: red;
-    height: 36px;
+    height: 24px;
     overflow: hidden; /* Ensure the inner fill respects the border radius */
 }
 
