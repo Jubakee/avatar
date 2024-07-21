@@ -23,7 +23,6 @@ function renderInventory() {
         const listItem = document.createElement('li');
         listItem.classList.add('inventory-item');
 
-        // Determine the border class based on the item type
         let borderClass;
         switch (item.type) {
             case 'Normal':
@@ -39,14 +38,8 @@ function renderInventory() {
                 borderClass = ''; // No border class if type is not recognized
         }
 
-        listItem.innerHTML = `
-            <div class="inventory-item-details ${borderClass}">
-                <span class="item-name">${item.name}</span>
-                <span class="item-description">${item.description}</span>
-                <img src="${item.image}" alt="${item.name}" class="item-image">
-            </div>
-        `;
-
+        listItem.classList.add(borderClass); // Add the border class
+        listItem.textContent = `${item.name}: ${item.description}`; // Text-only display
         inventoryList.appendChild(listItem);
     });
 
@@ -55,7 +48,7 @@ function renderInventory() {
 
 function handlePagination() {
     const inventoryList = document.getElementById('inventory-list');
-    const itemsPerPage = 6;
+    const itemsPerPage = 15;
     const items = inventoryList.getElementsByClassName('inventory-item');
     const totalItems = items.length;
     const totalPages = Math.ceil(totalItems / itemsPerPage);
